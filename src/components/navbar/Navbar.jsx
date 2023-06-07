@@ -3,6 +3,7 @@ import ActiveLink from '../utility/ActiveLink';
 
 const Navbar = () => {
 
+    const user =  false
     
 
     return (
@@ -38,22 +39,26 @@ const Navbar = () => {
                         <li><ActiveLink to={'/'}>Home</ActiveLink></li>
                         <li><ActiveLink to={'/'}>Instructors</ActiveLink></li>
                         <li><ActiveLink to={'/'}>classes</ActiveLink></li>
-                        <li><ActiveLink to={'/'}>Dashboard</ActiveLink></li>
+                        {user ? <li><ActiveLink to={'/'}>Dashboard</ActiveLink></li>: ''}
                         </ul>
                 </div>
 
 
-
+                {/* navbar end section*/}
                 <div className="navbar-end gap-2">
-                    <label className="btn btn-ghost btn-circle avatar">
-                        <div className="w-10 rounded-full">
-                            <img src='hello world '  />
-                        </div>
-                    </label>
-                        <button className='btn'>Sign Out</button>
+                    {
+                        user ? <>
+                            <label className="btn btn-ghost btn-circle avatar">
+                                <div className="w-10 rounded-full">
+                                    <img src='hello world ' />
+                                </div>
+                            </label>
+                            <button className='btn'>Sign Out</button>
+                        </> : <Link to='/signup' className='btn'>Sign Up</Link>
+                    }
                     </div>
 
-                </div>
+         </div>
            
         </nav>
 
