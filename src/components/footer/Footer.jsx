@@ -2,7 +2,7 @@
 import { Link } from 'react-router-dom';
 const Footer = () => {
     return (
-        <footer className="footer footer-center p-5  bg-slate-700 text-primary-content">
+        <footer className="footer footer-center p-5  bg-slate-700 text-primary-content mt-20">
             <div>
                 <img className='ml-3' width={120} src="../../../public/logo.png" alt="" />
                 <p className="font-bold">
