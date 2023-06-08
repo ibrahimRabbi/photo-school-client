@@ -1,7 +1,8 @@
  
 import useClassessHook from '../../Hooks/ClassessHook';
+import Card from '../../instructors/Card';
 import TitleBar from '../../utility/TitleBar';
-import InstructorCard from './InstructorCard';
+ 
  
 
 const PopularInstructor = () => {
@@ -13,7 +14,7 @@ const PopularInstructor = () => {
             <TitleBar title='popular Instructors' />
             <div className='grid grid-cols-3 gap-10 mt-11'>
                 {
-                    maxEnrolledClass.map(v => <InstructorCard obj={v} key={v._id} />)
+                    maxEnrolledClass.map(v => <Card obj={v} key={v._id} />)
                 }
             </div>
          </section>

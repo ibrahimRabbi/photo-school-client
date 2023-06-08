@@ -1,5 +1,5 @@
- import useClassessHook from "../../Hooks/ClassessHook";
-import Card from "./Card";
+ import ClassCard from "../../classes/ClassCard";
+import useClassessHook from "../../Hooks/ClassessHook";
  import TitleBar from "../../utility/TitleBar";
 
  
@@ -15,9 +15,9 @@ const PopulerClass = () => {
     return (
         <section className="mt-28 w-[90%] mx-auto">
             <TitleBar title='popular Classess'/>
-            <div className="grid grid-cols-3 gap-10 mt-11">
+            <div className="grid grid-cols-2 gap-10 mt-11">
                 {
-                    maxEnrolledClass.map(v => <Card obj={v} key={v._id} />)
+                    maxEnrolledClass.map(v => <ClassCard obj={v} key={v._id} />)
                 }
             </div>
         </section>
