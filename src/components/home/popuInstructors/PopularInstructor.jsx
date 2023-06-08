@@ -5,6 +5,7 @@ import InstructorCard from './InstructorCard';
  
 
 const PopularInstructor = () => {
+   
     const { classData } = useClassessHook()
     const maxEnrolledClass = classData.filter(v => v.totalEnrolled > 1700)
     return (

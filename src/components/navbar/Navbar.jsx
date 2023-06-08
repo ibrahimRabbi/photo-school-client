@@ -1,11 +1,34 @@
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { Context } from '../Authentication/AuthProvider';
 import ActiveLink from '../utility/ActiveLink';
-
+import Swal from 'sweetalert2'
 const Navbar = () => {
 
-    const user =  false
     
-
+    const {user,logOut} = useContext(Context)
+    
+    const logout = () => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "you want to sign out ?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sign Out'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                logOut()
+                Swal.fire(
+                    'signout',
+                    'success'
+                )
+            }
+        })
+    }
+        
+           
     return (
         <nav className='bg-emerald-400'>
             <div className="navbar w-[94%] mx-auto">   
@@ -53,8 +76,8 @@ const Navbar = () => {
                                     <img src='hello world ' />
                                 </div>
                             </label>
-                            <button className='btn'>Sign Out</button>
-                        </> : <Link to='/signup' className='btn'>Sign Up</Link>
+                            <button onClick={logout} className='btn'>Sign Out</button>
+                        </> : <Link to='/signin' className='btn'>Sign In</Link>
                     }
                     </div>
 

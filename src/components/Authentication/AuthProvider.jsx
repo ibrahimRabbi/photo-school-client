@@ -6,12 +6,11 @@ import {
     signInWithEmailAndPassword,
     updateProfile,
     GoogleAuthProvider,
-    GithubAuthProvider,
     signInWithPopup
 } from "firebase/auth";
-
-import app from '../../firebase.config'
+import { app } from "../../firebase.config";
 import { createContext, useState, useEffect } from 'react';
+
 export const Context = createContext();
 
 
@@ -48,11 +47,12 @@ const AuthProvider = ({ children }) => {
         return signInWithPopup(auth, googleProvider)
 
     }
-    const githubProvider = new GithubAuthProvider();
-    const signinGithub = () => {
-        return signInWithPopup(auth, githubProvider)
 
-    }
+    // const githubProvider = new GithubAuthProvider();
+    // const signinGithub = () => {
+    //     return signInWithPopup(auth, githubProvider)
+
+    // }
 
 
 
@@ -76,8 +76,6 @@ const AuthProvider = ({ children }) => {
         user,
         loading,
         signinGoogle,
-        signinGithub
-
     }
 
     return (
