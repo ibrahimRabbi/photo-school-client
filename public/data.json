@@ -1,0 +1,122 @@
+[
+  {
+    "instructorName": "John Doe",
+    "instructorImage": "https://i.ibb.co/k8D4Xvd/profile-handsome-businessman-glasses-smiling-short-haired-boss-white-shirt-grey-tie-keeping-document.jpg",
+    "instructorEmail": "johndoe1@example.com",
+    "className": "Landscape Photography",
+    "classPrice":  200,
+    "availableSeats": 10,
+    "totalEnrolled" :2450,
+    "classImage": "https://i.ibb.co/Gs5RpcW/download-1.jpg"
+  },
+  {
+    "instructorName": "Jane Smith",
+    "instructorImage": "https://i.ibb.co/1XDWXss/portrait-female-teacher-holding-notepad-green.jpg",
+    "instructorEmail": "janesmith@example.com",
+    "className": "Advanced Lighting Techniques",
+    "classPrice": 220,
+    "availableSeats": 5,
+    "totalEnrolled": 1008,
+    "classImage": "https://i.ibb.co/fXxHMHX/1562594084-79606-alexander-dummer-as4duj2j7r4-unsplashjpg.jpg"
+  },
+  {
+    "instructorName": "Mike Johnson",
+    "instructorImage": "https://i.ibb.co/hY265ty/ali-morshedlou-WMD64t-Mfc4k-unsplash.jpg",
+    "instructorEmail": "mikejohnson@example.com",
+    "className": "Portrait Photography",
+    "classPrice":  170,
+    "availableSeats": 8,
+    "totalEnrolled": 2150,
+    "classImage": "https://i.ibb.co/XWXhknb/aiony-haust-3-TLl-97-HNJo-unsplash.jpg"
+  },
+  {
+    "instructorName": "Mike Johnson",
+    "instructorImage": "https://i.ibb.co/yR6hccj/download.jpg",
+    "instructorEmail": "mikejohnson@example.com",
+    "className": "Wildlife Photography",
+    "classPrice":  430,
+    "availableSeats": 8,
+    "totalEnrolled": 1550,
+    "classImage": "https://i.ibb.co/Q6RkrYf/nastia-petruk-ON0-O3-Hgt-PJQ-unsplash.jpg"
+  },
+  {
+    "instructorName": "Mike Johnson",
+    "instructorImage": "https://i.ibb.co/yR6hccj/download.jpg",
+    "instructorEmail": "mikejohnson@example.com",
+    "className": "Street Photography",
+    "classPrice":  370,
+    "availableSeats": 8,
+    "totalEnrolled": 2750,
+    "classImage": "https://i.ibb.co/qY18GLk/zac-wolff-b-As9p-P4-XCm-I-unsplash.jpg"
+  },
+  {
+    "instructorName": "Mike Johnson",
+    "instructorImage": "https://i.ibb.co/yR6hccj/download.jpg",
+    "instructorEmail": "mikejohnson@example.com",
+    "className": "Macro Photography",
+    "classPrice":  370,
+    "availableSeats": 8,
+    "totalEnrolled": 1269,
+    "classImage": "https://i.ibb.co/Zf76GBG/images.jpg"
+  },
+  {
+    "instructorName": "Mike Johnson",
+    "instructorImage": "https://i.ibb.co/yR6hccj/download.jpg",
+    "instructorEmail": "mikejohnson@example.com",
+    "className": "Still Life Photography",
+    "classPrice":  570,
+    "totalEnrolled": 1454,
+    "availableSeats": 8,
+    "classImage": "https://i.ibb.co/xFf5Qb0/mollie-wetta-ag-P9-Rgn-WZAY-unsplash.jpg"
+  },
+  {
+    "instructorName": "Mike Johnson",
+    "instructorImage": "https://i.ibb.co/yR6hccj/download.jpg",
+    "instructorEmail": "mikejohnson@example.com",
+    "className": "Still Life Photography",
+    "classPrice":  670,
+    "availableSeats": 8,
+    "totalEnrolled": 1760,
+    "classImage": "https://i.ibb.co/xFf5Qb0/mollie-wetta-ag-P9-Rgn-WZAY-unsplash.jpg"
+  },
+  {
+    "instructorName": "Mike Johnson",
+    "instructorImage": "https://i.ibb.co/yR6hccj/download.jpg",
+    "instructorEmail": "mikejohnson@example.com",
+    "className": "Fashion Photography",
+    "classPrice":  270,
+    "availableSeats": 8,
+    "totalEnrolled": 1843,
+    "classImage": "https://i.ibb.co/Sywz1fP/khaled-ghareeb-p47o-VX9qhk-A-unsplash.jpg"
+  },
+  {
+    "instructorName": "Mike Johnson",
+    "instructorImage": "https://i.ibb.co/yR6hccj/download.jpg",
+    "instructorEmail": "mikejohnson@example.com",
+    "className": "Sports Photography",
+    "classPrice":  170,
+    "availableSeats": 8,
+    "totalEnrolled": 2030,
+    "classImage": "https://i.ibb.co/p4Brw7G/download-2.jpg"
+  },
+  {
+    "instructorName": "Mike Johnson",
+    "instructorImage": "https://i.ibb.co/yR6hccj/download.jpg",
+    "instructorEmail": "mikejohnson@example.com",
+    "className": "Documentary Photography",
+    "classPrice":  260,
+    "availableSeats": 8,
+    "totalEnrolled": 1150,
+    "classImage": "https://i.ibb.co/7nrBzfd/download-3.jpg"
+  },
+  {
+    "instructorName": "Mike Johnson",
+    "instructorImage": "https://i.ibb.co/yR6hccj/download.jpg",
+    "instructorEmail": "mikejohnson@example.com",
+    "className": "Wedding Photography",
+    "classPrice":  890,
+    "availableSeats": 8,
+    "totalEnrolled": 3450,
+    "classImage": "https://i.ibb.co/3rGsKnG/download-4.jpg"
+  }
+]
