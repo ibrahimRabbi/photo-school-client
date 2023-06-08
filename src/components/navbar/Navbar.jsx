@@ -59,9 +59,9 @@ const Navbar = () => {
                 {/* navbar when screen in large then visible this div*/}
                 <div className="navbar-center hidden lg:flex">
                         <ul className="menu menu-horizontal px-1 font-semibold text-lg">
-                        <li><ActiveLink to={'/'}>Home</ActiveLink></li>
-                        <li><ActiveLink to={'/'}>Instructors</ActiveLink></li>
-                        <li><ActiveLink to={'/'}>classes</ActiveLink></li>
+                        <li><ActiveLink to='/'>Home</ActiveLink></li>
+                        <li><ActiveLink to='/instructors'>Instructors</ActiveLink></li>
+                        <li><ActiveLink to='/classes'>classes</ActiveLink></li>
                         {user ? <li><ActiveLink to={'/'}>Dashboard</ActiveLink></li>: ''}
                         </ul>
                 </div>
