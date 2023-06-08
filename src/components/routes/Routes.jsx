@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Classes from "../classes/Classes";
 import Dashboard from "../Dashboard/Dashboard";
+import Payment from "../Dashboard/userDashboard/Payment";
 import SelectClass from "../Dashboard/userDashboard/SelectClass";
 import SignIn from "../form/SignIn";
 import SignUp from "../form/SignUp";
@@ -44,7 +45,11 @@ const router = createBrowserRouter([
             {
                 path: 'selecetClass',
                 element : <SelectClass/>
-            }
+            },
+            {
+                path: 'payment',
+                element : <Payment/>
+            },
         ]
     }
     
