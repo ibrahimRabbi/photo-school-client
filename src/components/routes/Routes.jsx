@@ -1,5 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Classes from "../classes/Classes";
+import Dashboard from "../Dashboard/Dashboard";
+import SelectClass from "../Dashboard/userDashboard/SelectClass";
 import SignIn from "../form/SignIn";
 import SignUp from "../form/SignUp";
  
@@ -35,6 +37,16 @@ const router = createBrowserRouter([
         path: '/signin',
         element : <SignIn/> 
     },
+    {
+        path: '/dashboard',
+        element: <Dashboard />,
+        children: [
+            {
+                path: 'selecetClass',
+                element : <SelectClass/>
+            }
+        ]
+    }
     
      
 ])

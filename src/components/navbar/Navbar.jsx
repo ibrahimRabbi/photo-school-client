@@ -7,7 +7,7 @@ const Navbar = () => {
 
     
     const {user,logOut} = useContext(Context)
-    
+    console.log(user)
     const logout = () => {
         Swal.fire({
             title: 'Are you sure?',
@@ -62,7 +62,14 @@ const Navbar = () => {
                         <li><ActiveLink to='/'>Home</ActiveLink></li>
                         <li><ActiveLink to='/instructors'>Instructors</ActiveLink></li>
                         <li><ActiveLink to='/classes'>classes</ActiveLink></li>
-                        {user ? <li><ActiveLink to={'/'}>Dashboard</ActiveLink></li>: ''}
+                        {user ? <>
+                            <li><ActiveLink to='/dashboard'>Dashboard</ActiveLink></li>
+                            <li className='relative'>
+                                <span className='absolute -end-8 badge badge-primary'>new</span>
+                                <ActiveLink to='/dashboard'>seleted Classes</ActiveLink>
+                            </li>
+                                </>
+                              : ''}
                         </ul>
                 </div>
 
@@ -71,11 +78,14 @@ const Navbar = () => {
                 <div className="navbar-end gap-2">
                     {
                         user ? <>
-                            <label className="btn btn-ghost btn-circle avatar">
-                                <div className="w-10 rounded-full">
-                                    <img src='hello world ' />
-                                </div>
-                            </label>
+                            <div className="tooltip tooltip-bottom z-20" data-tip={user.displayName}>
+                                <label className="btn btn-ghost btn-circle avatar " >
+                                    <div className="w-10 rounded-full">
+                                        <img src={user.photoURL} />
+                                    </div>
+                                </label>
+                            </div>
+                            
                             <button onClick={logout} className='btn'>Sign Out</button>
                         </> : <Link to='/signin' className='btn'>Sign In</Link>
                     }

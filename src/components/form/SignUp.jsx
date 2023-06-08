@@ -95,6 +95,7 @@ const SignUp = () => {
                 <input className="btn bg-emerald-400" type="submit" />
             </form>
             <p className="font-semibold mt-6 text-center">already have an account ? <Link to='/signin' className="text-emerald-500 font-semibold">Sign In</Link></p>
+            <div className="divider">OR</div>
         </section>
     );
 };

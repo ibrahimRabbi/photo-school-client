@@ -78,6 +78,7 @@ const SignIn = () => {
                 <input value='sign In' type="submit" className='bg-emerald-400 btn w-full mt-16'/>
             </form>
             <p className="font-semibold text-center">dont have an account ? <Link to='/signup' className="text-emerald-500 font-semibold">Register</Link></p>
+            <div className="divider">OR</div>
              
         </section>
     );
