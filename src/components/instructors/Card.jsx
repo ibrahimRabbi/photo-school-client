@@ -3,7 +3,7 @@
 const Card = ({ obj }) => {
     const { instructorImage, instructorEmail, instructorName } = obj
     return (
-        <section className="flex justify-center items-center gap-5">
+        <section className="flex justify-center items-center gap-5 bg-slate-100 border p-5 rounded-lg">
             <div className="avatar">
                 <div className="w-20 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                     <img src={instructorImage} />
