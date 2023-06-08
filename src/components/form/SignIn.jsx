@@ -16,7 +16,7 @@ const SignIn = () => {
 
 
     const loginHandler = (data) => {
-        console.log(data)
+ 
         const {email,password} = data
         signIn(email, password)
             .then(() => {  
