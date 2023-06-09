@@ -7,7 +7,7 @@ const Navbar = () => {
 
     
     const {user,logOut} = useContext(Context)
-    console.log(user)
+     
     const logout = () => {
         Swal.fire({
             title: 'Are you sure?',

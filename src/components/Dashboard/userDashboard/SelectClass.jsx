@@ -53,7 +53,7 @@ const SelectedClass = () => {
         <div className="overflow-x-auto w-full my-11 ml-6 p-11">
             <div className='p-5 text-2xl flex justify-between items-center'>
                 <h1>Total Amount : ${total}</h1>
-                <Link to='/dashboard/payment' state={{ total }} className='btn border-0 bg-yellow-400 text-black text-center'>procced to pay</Link>
+                <Link to='/dashboard/payment' state={{total}} className='btn border-0 bg-yellow-400 text-black text-center'>procced to pay</Link>
             </div>
             <table className="table w-full">
 

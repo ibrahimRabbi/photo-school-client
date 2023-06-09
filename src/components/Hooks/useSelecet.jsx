@@ -9,7 +9,7 @@ const useSelectedData = () => {
     const {data:userSelectedDatas=[],refetch} = useQuery({
         queryKey: ['select'],
         queryFn: async () => {
-            const fetching = await fetch(`http://localhost:5000/select?${user.email}`)
+            const fetching = await fetch(`http://localhost:5000/select?${user?.email}`)
             const final = await fetching.json()
             return final
         }
