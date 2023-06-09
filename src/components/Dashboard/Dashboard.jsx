@@ -22,9 +22,10 @@ const Dashboard = () => {
                     <ul className="menu p-4 w-80 h-full  text-base-content bg-emerald-400">
                       
                         <li><ActiveLink to='selecetClass'> <BiSelectMultiple/> selected Classes</ActiveLink></li>
-                        <li><ActiveLink to='fgfg'><MdPayment /> Enrolled Classes</ActiveLink></li>
+                        <li><ActiveLink to='enrolled'><MdPayment/>Enrolled Classes</ActiveLink></li>
+                        <li><ActiveLink to='payhistory'><MdPayment/>Enrolled Classes</ActiveLink></li>
                         <div className="divider"></div>
-                        <li><ActiveLink to='/'><FaHome/> Enrolled Classes</ActiveLink></li>
+                        <li><ActiveLink to='/'><FaHome/>Home</ActiveLink></li>
                     </ul>
 
                 </div>
