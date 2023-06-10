@@ -77,7 +77,7 @@ const Navbar = () => {
                 {/* navbar end section*/}
                 <div className="navbar-end gap-2">
                     {
-                        user ? <>
+                        user ? <div className='flex items-center gap-2'>
                             <div className="tooltip tooltip-bottom z-20" data-tip={user.displayName}>
                                 <label className="btn btn-ghost btn-circle avatar " >
                                     <div className="w-10 rounded-full">
@@ -86,8 +86,8 @@ const Navbar = () => {
                                 </label>
                             </div>
                             
-                            <button onClick={logout} className='btn'>Sign Out</button>
-                        </> : <Link to='/signin' className='btn'>Sign In</Link>
+                            <button onClick={logout} className='btn text-sm'>Sign Out</button>
+                        </div> : <Link to='/signin' className='btn'>Sign In</Link>
                     }
                     </div>
 

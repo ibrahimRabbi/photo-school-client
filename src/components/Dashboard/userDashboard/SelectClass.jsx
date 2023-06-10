@@ -8,11 +8,11 @@ import useSelectedData from '../../Hooks/useSelecet';
 
 
 const SelectedClass = () => {
-    const {userSelectedDatas,refetch} =useSelectedData()
-
+    const {selectedData,refetch} = useSelectedData()
+ 
     let total = 0
-    for (let index = 0; index < userSelectedDatas.length; index++) {
-        total = total + userSelectedDatas[0].classPrice
+    for (let index = 0; index < selectedData.length; index++) {
+        total = total + selectedData[0].classPrice
     }
 
     const deleteHandler = (id) => {
@@ -67,7 +67,7 @@ const SelectedClass = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {userSelectedDatas.map((value, index) => {
+                    {selectedData.map((value, index) => {
                         return (
                             <tr key={value._id}>
                                 <th>{index + 1}</th>

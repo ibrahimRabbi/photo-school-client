@@ -23,7 +23,7 @@ const Dashboard = () => {
                       
                         <li><ActiveLink to='selecetClass'> <BiSelectMultiple/> selected Classes</ActiveLink></li>
                         <li><ActiveLink to='enrolled'><MdPayment/>Enrolled Classes</ActiveLink></li>
-                        <li><ActiveLink to='payhistory'><MdPayment/>Enrolled Classes</ActiveLink></li>
+                        <li><ActiveLink to='payhistory'><MdPayment/>Payment History</ActiveLink></li>
                         <div className="divider"></div>
                         <li><ActiveLink to='/'><FaHome/>Home</ActiveLink></li>
                     </ul>

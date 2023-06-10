@@ -6,16 +6,17 @@ import { Context } from "../Authentication/AuthProvider";
 
 const useSelectedData = () => {
     const {user} = useContext(Context)
-    const {data:userSelectedDatas=[],refetch} = useQuery({
+     
+    const {data:selectedData=[],refetch} = useQuery({
         queryKey: ['select'],
         queryFn: async () => {
-            const fetching = await fetch(`http://localhost:5000/select?${user?.email}`)
+            const fetching = await fetch(`http://localhost:5000/select?email=${user?.email}`)
             const final = await fetching.json()
             return final
         }
     })
 
-    return { userSelectedDatas,refetch}
+    return { selectedData,refetch}
 };
 
 export default useSelectedData;

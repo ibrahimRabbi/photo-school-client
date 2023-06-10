@@ -15,8 +15,8 @@ const CheckoutForm = ({ price }) => {
     const [proccesing, setProcessing] = useState(false)
     const [clientSecret, setClientSecret] = useState("");
     const { user } = useContext(Context)
-    const { userSelectedDatas } = useSelectedData()
-    
+    const { selectedData } = useSelectedData()
+   
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -68,11 +68,11 @@ const CheckoutForm = ({ price }) => {
                  transictionId: paymentIntent.id,
                  amount: price,
                  email: user?.email,
-                 classes: userSelectedDatas.map(v => v.className),
+                 classes: selectedData.map(v => v.className),
                  date: new Date(),
-                 enrollClass: userSelectedDatas.length,
-                 selecetClassId: userSelectedDatas.map(v => v._id),
-                 classId: userSelectedDatas.map(v => v.classId)    
+                 enrollClass: selectedData.length,
+                 selecetClassId: selectedData.map(v => v._id),
+                 classId: selectedData.map(v => v.classId)    
              }
             fetch("http://localhost:5000/summery", {
                 method: "POST",
