@@ -81,7 +81,8 @@ const CheckoutForm = ({ price }) => {
             })
                 .then(res => res.json())
                 .then(res => {
-                    if (res.insertedId) {
+                     
+                    if (res.result.insertedId && res.deleted.deletedCount) {
                         Swal.fire({
                             position: 'top-end',
                             icon: 'success',
@@ -89,6 +90,8 @@ const CheckoutForm = ({ price }) => {
                             showConfirmButton: false,
                             timer: 1500
                         })
+
+
                     }
             })
         }

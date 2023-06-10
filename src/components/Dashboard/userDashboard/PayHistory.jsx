@@ -16,7 +16,7 @@ const PayHistory = () => {
         .then(res=>setdata(res))
     },[user])
      
-    console.log(summeryData)
+    //console.log(summeryData)
 
      
     return (
