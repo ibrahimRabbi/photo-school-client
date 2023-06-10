@@ -1,24 +1,11 @@
-import { useQuery } from "@tanstack/react-query";
-import { useEffect } from "react";
-import { useState } from "react";
-import { useContext } from "react";
+import usePayHistory from "../../Hooks/usePayHistory";
 import { Link } from "react-router-dom";
-import { Context } from "../../Authentication/AuthProvider";
+
 
 const PayHistory = () => {
-
-    const { user } = useContext(Context)
-    const [summeryData, setdata] = useState([])
+    const summeryData = usePayHistory()
     
-    useEffect(() => {
-      fetch(`http://localhost:5000/summery?email=${user?.email}`)
-        .then(res=>res.json())
-        .then(res=>setdata(res))
-    },[user])
-     
-    //console.log(summeryData)
-
-     
+    
     return (
          
         <div className="overflow-x-auto w-full my-11 ml-6 p-11">
