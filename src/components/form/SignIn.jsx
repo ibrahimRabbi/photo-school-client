@@ -17,25 +17,30 @@ const SignIn = () => {
 
     const loginHandler = (data) => {
  
-        const {email,password} = data
-        signIn(email, password)
-            .then(() => {  
-                setError('')
-                Swal.fire({
-                    title: 'Log In Successfull',
-                    text: 'keep Rock',
-                    icon: 'success',
-                    confirmButtonText: 'Cool'
+        const {email,password,confirm} = data
+        
+        if (password !== confirm) {
+            setError('confirm Password doesnt Match')
+        } else {
+            signIn(email, password)
+                .then(() => {
+                    setError('')
+                    Swal.fire({
+                        title: 'Log In Successfull',
+                        text: 'keep Rock',
+                        icon: 'success',
+                        confirmButtonText: 'Cool'
+                    })
+                    navigate(redirectTo)
                 })
-                navigate(redirectTo)
-            })
-            .catch(error => {
-                if (error.message == "Firebase: Error (auth/user-not-found).") {
-                    setError('user is not exist in this application plz provied a valid password and email')
-                } else if (error.message == 'Firebase: Error (auth/wrong-password).') {
-                    setError('invalid password plz provide a valid password')
-                }
-            })
+                .catch(error => {
+                    if (error.message == "Firebase: Error (auth/user-not-found).") {
+                        setError('user is not exist in this application plz provied a valid password and email')
+                    } else if (error.message == 'Firebase: Error (auth/wrong-password).') {
+                        setError('invalid password plz provide a valid password')
+                    }
+                })
+        }
 
     }
 

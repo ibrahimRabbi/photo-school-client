@@ -16,29 +16,30 @@ const SignUp = () => {
     
 
     const submit = (data) => {
-         const {name,email,password ,image} = data
-      
-
-        signUp(email, password)
-            .then(res => {
-                profile(res.user, name, image)              
-                setError('')
-                Swal.fire({
-                    title: 'registation Successfull',
-                    text: 'now you can access any kind of information',
-                    icon: 'success',
-                    confirmButtonText: 'Okay'
+         const {name,email,password ,image,confirm} = data
+        if (password !== confirm) {
+           setError('confirm password doesnt match')
+        } else {
+            signUp(email, password)
+                .then(res => {
+                    profile(res.user, name, image)
+                    setError('')
+                    Swal.fire({
+                        title: 'registation Successfull',
+                        text: 'now you can access any kind of information',
+                        icon: 'success',
+                        confirmButtonText: 'Okay'
+                    })
+                    navigate('/')
                 })
-                navigate('/')
-            })
-            .catch(error => {
-                if (error.message == "Firebase: Password should be at least 6 characters (auth/weak-password).") {
-                    setError('please provied a password at least 6 characters')
-                }
-                if (error.message == "Firebase: Error (auth/email-already-in-use).") {
-                    setError('this email already have an account')
-                }
-            })
+                .catch(error => {
+                    if (error.message == "Firebase: Error (auth/email-already-in-use).") {
+                        setError('this email already have an account')
+                    }
+                })
+       }
+
+        
 
 
     }
@@ -72,15 +73,21 @@ const SignUp = () => {
                     <label className="label">
                         <span className="label-text">Password</span>
                     </label>
-                    <input className="border border-emerald-400 p-2" placeholder="password" {...register('password', { required: true })} />
-                    {errors.password && <p className="text-red-500">password is requird</p>}
+                    <input type='password' className="border border-emerald-400 p-2" placeholder="password" {...register('password', {
+                        required: true,
+                        minLength: 6,
+                        pattern: /(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z])/
+                    })} />
+        {errors.password?.type ==='required' && <p className="text-red-500">password is requird</p>}
+    {errors.password?.type ==='minLength' && <p className="text-red-500">password minmum 6 characters</p>}
+    {errors.password?.type ==='pattern' && <p className="text-red-500">password must have a uppercase lowercase and numbers characters</p>}
                 </div>
 
                 <div className="form-control w-full">
                     <label className="label">
                         <span className="label-text">Confirm Password</span>
                     </label>
-                    <input className="border border-emerald-400 p-2" placeholder="confirm-password" {...register('confirm', { required: true })} />
+                    <input type='password' className="border border-emerald-400 p-2" placeholder="confirm-password" {...register('confirm', { required: true })} />
                     {errors.confirm && <p className="text-red-500">confirm password is required</p>}
                 </div>
 
