@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 
 const useClassessHook = () => {
 
-     const { data:classData=[]} = useQuery({
+     const { data:classData=[],refetch} = useQuery({
         queryKey: ['class'],
         queryFn: async () => {
           const fetching = await fetch(`http://localhost:5000/class`)
@@ -13,7 +13,7 @@ const useClassessHook = () => {
         },
     })
      
-    return {classData}
+    return {classData,refetch}
 };
 
 export default useClassessHook;
