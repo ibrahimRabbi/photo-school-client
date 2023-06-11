@@ -1,12 +1,15 @@
 import {  Outlet } from "react-router-dom";
 import ActiveLink from "../utility/ActiveLink";
-import { BiSelectMultiple } from 'react-icons/bi'
+import { BiSelectMultiple, BiBookReader} from 'react-icons/bi'
 import { MdPayment } from 'react-icons/md'
-import { FaHome } from 'react-icons/fa'
+import { AiOutlineCrown, AiOutlineFolderAdd } from 'react-icons/ai'
+import { FaHome, FaSignOutAlt } from 'react-icons/fa'
 
  
 
 const Dashboard = () => {
+
+    const role = true;
     return (
         <section className="">
             <div className="drawer lg:drawer-open">
@@ -19,13 +22,22 @@ const Dashboard = () => {
                
                 <div className="drawer-side">
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                    <ul className="menu p-4 w-80 h-full  text-base-content bg-emerald-400">
+                    <ul className="menu p-4 w-80 h-full bg-emerald-400 text-lg font-semibold text-gray-600">
                       
-                        <li><ActiveLink to='selecetClass'> <BiSelectMultiple/>selected Classes</ActiveLink></li>
-                        <li><ActiveLink to='enrolled'><MdPayment/>Enrolled Classes</ActiveLink></li>
-                        <li><ActiveLink to='payhistory'><MdPayment/>Payment History</ActiveLink></li>
+                    {
+                            role ? <>
+                                <li><ActiveLink to='addclass'><AiOutlineFolderAdd />Add Class</ActiveLink></li>
+                                <li><ActiveLink to='myclass'><AiOutlineCrown/>My Classes</ActiveLink></li>
+                            </> : <>
+                                    <li><ActiveLink to='selecetClass'> <BiSelectMultiple />selected Classes</ActiveLink></li>
+                                    <li><ActiveLink to='enrolled'><MdPayment />Enrolled Classes</ActiveLink></li>
+                                    <li><ActiveLink to='payhistory'><MdPayment />Payment History</ActiveLink></li>
+                                </> 
+                    }
                         <div className="divider"></div>
                         <li><ActiveLink to='/'><FaHome/>Home</ActiveLink></li>
+                        <li><ActiveLink to='/classes'><BiBookReader/>Classes</ActiveLink></li>
+                        <li><ActiveLink to='/classes'><FaSignOutAlt/>LogOut</ActiveLink></li>
                     </ul>
 
                 </div>

@@ -1,14 +1,14 @@
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 import CheckoutForm from './Checkout';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
  
 const Payment = () => {
 const stripePromise = loadStripe(import.meta.env.VITE_PUBLISHABLE_KEY);
 
     const location = useLocation()
     const price = location.state?.total
- 
+    const param = useParams()
     
    
 
@@ -19,7 +19,7 @@ const stripePromise = loadStripe(import.meta.env.VITE_PUBLISHABLE_KEY);
 
     return (
         <Elements stripe={stripePromise}>
-            <CheckoutForm price={price} />
+            <CheckoutForm price={price} id={param.id} />
         </Elements>
     );
 };

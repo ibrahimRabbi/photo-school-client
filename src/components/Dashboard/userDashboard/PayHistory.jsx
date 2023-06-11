@@ -12,10 +12,10 @@ const PayHistory = () => {
              
             <table className="table w-full">
 
-                <thead className='bg-emerald-400 text-lg'>
+                <thead className='bg-emerald-400 text-[16px]'>
                     <tr>
                         <th>Email</th>
-                        <th>quantity of EC</th>
+                        <th>class Name</th>
                         <th>Date</th>
                         <th>Price</th>
                         <th>Action</th>
@@ -26,7 +26,7 @@ const PayHistory = () => {
                         return (
                             <tr key={value._id}>
                                 <th>{value.email}</th>
-                                <td>{value.enrollClass}</td>
+                                <td>{value.className}</td>
                                 <td>{value.date}</td>
                                 <th>${value.amount}</th>
                                 <th>

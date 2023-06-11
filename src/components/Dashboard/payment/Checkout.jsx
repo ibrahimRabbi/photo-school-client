@@ -8,7 +8,7 @@ import './payment.css'
 
 
 
-const CheckoutForm = ({ price }) => {
+const CheckoutForm = ({ price,id }) => {
     const stripe = useStripe();
     const elements = useElements();
     const [errorMessage, setError] = useState('')
@@ -17,6 +17,8 @@ const CheckoutForm = ({ price }) => {
     const { user } = useContext(Context)
     const { selectedData } = useSelectedData()
    
+    const dataObj = selectedData.find(v=> v._id == id)
+ 
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -25,12 +27,10 @@ const CheckoutForm = ({ price }) => {
             return;
         }
 
-
         const card = elements.getElement(CardElement);
         if (card == null) {
             return;
         }
-
 
         const { error } = await stripe.createPaymentMethod({
             type: 'card',
@@ -68,12 +68,11 @@ const CheckoutForm = ({ price }) => {
                  transictionId: paymentIntent.id,
                  amount: price,
                  email: user?.email,
-                 classes: selectedData.map(v => v.className),
                  date: new Date(),
-                 enrollClass: selectedData.length,
-                 selecetClassId: selectedData.map(v => v._id),
-                 classId: selectedData.map(v => v.classId)    
-             }
+                 className: dataObj.className,
+                 selecetClassId: dataObj._id,
+                 classId: dataObj.classId    
+              }
             fetch("http://localhost:5000/summery", {
                 method: "POST",
                 headers: { 'content-type': 'application/json' },

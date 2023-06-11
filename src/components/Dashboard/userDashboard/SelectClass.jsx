@@ -1,6 +1,5 @@
- 
-
 import { FaTrash } from 'react-icons/fa'
+import { BiCreditCard } from 'react-icons/bi'
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import useSelectedData from '../../Hooks/useSelecet';
@@ -10,10 +9,10 @@ import useSelectedData from '../../Hooks/useSelecet';
 const SelectedClass = () => {
     const {selectedData,refetch} = useSelectedData()
  
-    let total = 0
-    for (let index = 0; index < selectedData.length; index++) {
-        total = total + selectedData[0].classPrice
-    }
+    // let total = 0
+    // for (let index = 0; index < selectedData.length; index++) {
+    //     total = total + selectedData[0].classPrice
+    // }
 
     const deleteHandler = (id) => {
         Swal.fire({
@@ -52,8 +51,7 @@ const SelectedClass = () => {
 
         <div className="overflow-x-auto w-full my-11 ml-6 p-11">
             <div className='p-5 text-2xl flex justify-between items-center'>
-                <h1>Total Amount : ${total}</h1>
-                <Link to='/dashboard/payment' state={{total}} className='btn border-0 bg-yellow-400 text-black text-center'>procced to pay</Link>
+                <h1>your selected Class : {selectedData.length}</h1>
             </div>
             <table className="table w-full">
 
@@ -78,8 +76,9 @@ const SelectedClass = () => {
                                 </td>
                                 <td>{value.className}</td>
                                 <th>${value.classPrice}</th>
-                                <th>
-                                    <button onClick={() => deleteHandler(value._id)} className='text-red-600 text-2xl'><FaTrash /></button>
+                                <th className='flex gap-4 items-center'>
+                                    <button onClick={() => deleteHandler(value._id)} className='text-red-600 text-2xl border p-2 rounded-lg'><FaTrash /></button>
+                                    <Link to={`/dashboard/payment/${value._id}`} className=' border p-2 rounded-lg' state={{ total: value.classPrice }}><BiCreditCard className='text-emerald-400 text-2xl'/></Link>
                                 </th>
                             </tr>
                         )
