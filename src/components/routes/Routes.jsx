@@ -3,6 +3,7 @@ import Classes from "../classes/Classes";
 import Dashboard from "../Dashboard/Dashboard";
 import AddClass from "../Dashboard/instructorDashboard/AddClass";
 import MayClass from "../Dashboard/instructorDashboard/MayClass";
+import UpdateClass from "../Dashboard/instructorDashboard/UpdateClass";
 import Payment from "../Dashboard/payment/Payment";
 import Enrolled from "../Dashboard/userDashboard/Enrolled";
 import PayHistory from "../Dashboard/userDashboard/PayHistory";
@@ -71,6 +72,10 @@ const router = createBrowserRouter([
             {
                 path: 'myclass',
                 element : <MayClass/>
+            },
+            {
+                path: 'updateClass/:id',
+                element : <UpdateClass/>
             },
         ]
     }

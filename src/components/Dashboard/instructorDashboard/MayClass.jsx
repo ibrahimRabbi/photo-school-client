@@ -1,16 +1,18 @@
- 
- 
+
+
 import { FaTrash, FaEdit } from 'react-icons/fa';
 import { BiMessageDetail } from 'react-icons/bi'
 import Swal from 'sweetalert2';
-import useMyClass from './useMyClass';
- 
- 
+import useMyClass from '../../Hooks/useMyClass';
+import { Link } from 'react-router-dom';
+
+
+
 
 const MayClass = () => {
-     
+
     const {datas,refetch} = useMyClass()
-    
+
 
     const deleteHandler = (id) => {
         Swal.fire({
@@ -37,19 +39,19 @@ const MayClass = () => {
                             )
                         }
                     })
-                
+
             }
         })
-        
-      
+
+
     }
 
 
-     
-     
+
+
     return (
         <div className="overflow-x-auto w-full my-11 ml-6 p-11">
-             
+
             <table className="table w-full">
 
                 <thead className='bg-emerald-400 text-[16px]'>
@@ -73,10 +75,10 @@ const MayClass = () => {
                                 <td>{value.status}</td>
                                 <td><span className='ml-10'>{value.totalEnrolled}</span></td>
                                 <td>{value.availableSeats}</td>
-                                <th><BiMessageDetail className='text-2xl ml-6'/></th>
+                                <th><BiMessageDetail className='text-2xl ml-6' /></th>
                                 <th className='flex gap-3'>
-                                    <button onClick={()=>deleteHandler(value._id)} className='bg-red-600 p-2 rounded-lg text-slate-50 flex gap-2 items-center'><FaTrash /> Delete</button>
-                                    <button className='bg-yellow-400 p-2 rounded-lg text-slate-50 flex gap-2 items-center '><FaEdit/> update</button>
+                                    <button onClick={() => deleteHandler(value._id)} className='bg-red-600 p-2 rounded-lg text-slate-50 flex gap-2 items-center'><FaTrash /> Delete</button>
+                                    <Link to={`/dashboard/updateClass/${value._id}`} className='bg-yellow-400 p-2 rounded-lg text-slate-50 flex gap-2 items-center '><FaEdit /> update</Link>
                                 </th>
                             </tr>
                         )
