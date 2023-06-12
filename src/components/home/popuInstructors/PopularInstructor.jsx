@@ -12,7 +12,7 @@ const PopularInstructor = () => {
     return (
         <section className="mt-28 w-[90%] mx-auto">
             <TitleBar title='popular Instructors' />
-            <div className='grid grid-cols-3 gap-10 mt-11'>
+            <div className='grid lg:grid-cols-3 gap-10 mt-11'>
                 {
                     maxEnrolledClass.map(v => <Card obj={v} key={v._id} />)
                 }

@@ -15,7 +15,7 @@ const PopulerClass = () => {
     return (
         <section className="mt-28 w-[90%] mx-auto">
             <TitleBar title='popular Classess'/>
-            <div className="grid grid-cols-2 gap-10 mt-11">
+            <div className="grid lg:grid-cols-2 gap-10 mt-11">
                 {
                     maxEnrolledClass.map(v => <ClassCard obj={v} key={v._id} />)
                 }

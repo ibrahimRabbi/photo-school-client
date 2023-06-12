@@ -7,7 +7,8 @@ import './student.css'
 import { EffectCoverflow, Pagination } from "swiper";
 const Students = () => {  
     return (
-        <section className=''>
+        <section className='mt-11'>
+            <TitleBar title='Student Feedbacks'/>
             <Swiper
                 effect={"coverflow"}
                 grabCursor={true}

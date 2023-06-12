@@ -69,7 +69,7 @@ const ClassCard = ({ obj }) => {
 
     }
     return (
-        <div className={`grid layout border p-5 rounded-lg ${availableSeats == 0 ? 'bg-red-400' : 'bg-base-200'}`}>
+        <div className={`grid gap-8 lg:gap-1 layout border p-5 rounded-lg ${availableSeats == 0 ? 'bg-red-400' : 'bg-base-200'}`}>
             <div className="avatar">
                 <div className="w-32 rounded-xl">
                     <img src={classImage} />
