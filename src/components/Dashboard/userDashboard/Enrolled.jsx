@@ -1,23 +1,23 @@
-import { useEffect, useContext,useState } from "react";
+import { useEffect, useContext, useState } from "react";
 import { FaTrash } from "react-icons/fa";
 import { Context } from "../../Authentication/AuthProvider";
 
 const Enrolled = () => {
-    
+
     const [data, setData] = useState([])
     const { user } = useContext(Context)
-    
+
     useEffect(() => {
-        fetch(`http://localhost:5000/class?email=${user?.email}`)
-        .then(res => res.json())
-        .then(res=>setData(res))
-    },[user])
-     
+        fetch(`https://photography-server-zeta.vercel.app/class?email=${user?.email}`)
+            .then(res => res.json())
+            .then(res => setData(res))
+    }, [user])
+
     console.log(data)
-      
+
     return (
-        
-        <div className="overflow-x-auto w-full my-11 ml-6 p-11">         
+
+        <div className="overflow-x-auto w-full my-11 ml-6 p-11">
             <table className="table w-full">
                 <thead className='bg-emerald-400 text-lg'>
                     <tr>
@@ -41,7 +41,7 @@ const Enrolled = () => {
                                 <td>{value.className}</td>
                                 <th>${value.classPrice}</th>
                                 <th>
-                                    <button  className='text-red-600 text-2xl'><FaTrash/></button>
+                                    <button className='text-red-600 text-2xl'><FaTrash /></button>
                                 </th>
                             </tr>
                         )

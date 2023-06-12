@@ -1,5 +1,5 @@
 import { useContext } from 'react';
- 
+
 import { FaGoogle } from 'react-icons/fa'
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
@@ -14,17 +14,17 @@ const SigninProvider = ({ redirect }) => {
     const googleHandler = () => {
         signinGoogle()
             .then(res => {
-                fetch('http://localhost:5000/user', {
+                fetch('https://photography-server-zeta.vercel.app/user', {
                     method: "POST",
                     headers: { 'content-type': 'application/json' },
                     body: JSON.stringify({ email: res.user.email, name: res.user.displayName })
                 })
                     .then(res => res.json())
                     .then(() => {
-                            navigate(redirect)    
-                })
+                        navigate(redirect)
+                    })
             })
-        .catch(err=>console.log(err))
+            .catch(err => console.log(err))
     }
 
 

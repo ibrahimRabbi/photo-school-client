@@ -3,12 +3,12 @@ import { BiCreditCard } from 'react-icons/bi'
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import useSelectedData from '../../Hooks/useSelecet';
- 
+
 
 
 const SelectedClass = () => {
-    const {selectedData,refetch} = useSelectedData()
- 
+    const { selectedData, refetch } = useSelectedData()
+
     // let total = 0
     // for (let index = 0; index < selectedData.length; index++) {
     //     total = total + selectedData[0].classPrice
@@ -24,9 +24,9 @@ const SelectedClass = () => {
             cancelButtonColor: '#d33',
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
-            
+
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/select/${id}`, {
+                fetch(`https://photography-server-zeta.vercel.app/select/${id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())
@@ -78,7 +78,7 @@ const SelectedClass = () => {
                                 <th>${value.classPrice}</th>
                                 <th className='flex gap-4 items-center'>
                                     <button onClick={() => deleteHandler(value._id)} className='text-red-600 text-2xl border p-2 rounded-lg'><FaTrash /></button>
-                                    <Link to={`/dashboard/payment/${value._id}`} className=' border p-2 rounded-lg' state={{ total: value.classPrice }}><BiCreditCard className='text-emerald-400 text-2xl'/></Link>
+                                    <Link to={`/dashboard/payment/${value._id}`} className=' border p-2 rounded-lg' state={{ total: value.classPrice }}><BiCreditCard className='text-emerald-400 text-2xl' /></Link>
                                 </th>
                             </tr>
                         )

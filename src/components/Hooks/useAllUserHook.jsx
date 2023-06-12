@@ -1,19 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
 
- 
+
 
 const useAllUserHook = () => {
 
-    const {data:allUser=[],refetch } = useQuery({
+    const { data: allUser = [], refetch } = useQuery({
         queryKey: ['/user'],
         queryFn: async () => {
-            const fetching = await fetch('http://localhost:5000/user')
+            const fetching = await fetch('https://photography-server-zeta.vercel.app/user')
             const result = fetching.json()
-            return result 
+            return result
         }
-})
+    })
 
-    return {allUser,refetch}
+    return { allUser, refetch }
 };
 
 export default useAllUserHook;

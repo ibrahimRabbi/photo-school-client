@@ -8,7 +8,7 @@ import './payment.css'
 
 
 
-const CheckoutForm = ({ price,id }) => {
+const CheckoutForm = ({ price, id }) => {
     const stripe = useStripe();
     const elements = useElements();
     const [errorMessage, setError] = useState('')
@@ -16,9 +16,9 @@ const CheckoutForm = ({ price,id }) => {
     const [clientSecret, setClientSecret] = useState("");
     const { user } = useContext(Context)
     const { selectedData } = useSelectedData()
-   
-    const dataObj = selectedData.find(v=> v._id == id)
- 
+
+    const dataObj = selectedData.find(v => v._id == id)
+
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -62,25 +62,25 @@ const CheckoutForm = ({ price,id }) => {
             console.log('[paymentIntent]', paymentIntent);
         }
 
-       
+
         if (paymentIntent.status == 'succeeded') {
-             const summery = {
-                 transictionId: paymentIntent.id,
-                 amount: price,
-                 email: user?.email,
-                 date: new Date(),
-                 className: dataObj.className,
-                 selecetClassId: dataObj._id,
-                 classId: dataObj.classId    
-              }
-            fetch("http://localhost:5000/summery", {
+            const summery = {
+                transictionId: paymentIntent.id,
+                amount: price,
+                email: user?.email,
+                date: new Date(),
+                className: dataObj.className,
+                selecetClassId: dataObj._id,
+                classId: dataObj.classId
+            }
+            fetch("https://photography-server-zeta.vercel.app/summery", {
                 method: "POST",
                 headers: { 'content-type': 'application/json' },
-                body : JSON.stringify(summery)
+                body: JSON.stringify(summery)
             })
                 .then(res => res.json())
                 .then(res => {
-                     
+
                     if (res.result.insertedId && res.deleted.deletedCount) {
                         Swal.fire({
                             position: 'top-end',
@@ -92,7 +92,7 @@ const CheckoutForm = ({ price,id }) => {
 
 
                     }
-            })
+                })
         }
     };
 
@@ -102,7 +102,7 @@ const CheckoutForm = ({ price,id }) => {
 
     useEffect(() => {
         if (price > 0) {
-            fetch("http://localhost:5000/create-payment-intent", {
+            fetch("https://photography-server-zeta.vercel.app/create-payment-intent", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ price }),

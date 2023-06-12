@@ -1,5 +1,5 @@
-import { useEffect,useState,useContext } from "react";
- import { Context } from "../Authentication/AuthProvider";
+import { useEffect, useState, useContext } from "react";
+import { Context } from "../Authentication/AuthProvider";
 
 const usePayHistory = () => {
 
@@ -8,15 +8,15 @@ const usePayHistory = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/summery?email=${user?.email}`)
+        fetch(`https://photography-server-zeta.vercel.app/summery?email=${user?.email}`)
             .then(res => res.json())
             .then(res => setdata(res))
     }, [user])
 
 
-    
+
     return summeryData
-     
+
 };
 
 export default usePayHistory;

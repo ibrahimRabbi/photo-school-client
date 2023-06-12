@@ -9,7 +9,7 @@ const UpdateClass = () => {
     const [image, setImage] = useState('')
     const param = useParams()
     const [data, setdata] = useState({})
-    const url = `http://localhost:5000/class/${param.id}`
+    const url = `https://photography-server-zeta.vercel.app/class/${param.id}`
 
     useEffect(() => {
         fetch(url)
@@ -36,14 +36,14 @@ const UpdateClass = () => {
         })
             .then(res => res.json())
             .then(res => {
-                setImage(res.data.display_url) 
+                setImage(res.data.display_url)
             })
 
 
-        fetch((`http://localhost:5000/update/${param.id}`), {
+        fetch((`https://photography-server-zeta.vercel.app/update/${param.id}`), {
             method: "PATCH",
             headers: { 'content-type': 'application/json' },
-            body: JSON.stringify({ className, classPrice, availableSeats,img:image})
+            body: JSON.stringify({ className, classPrice, availableSeats, img: image })
         })
             .then(res => res.json())
             .then(res => {

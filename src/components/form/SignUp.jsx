@@ -11,21 +11,21 @@ const SignUp = () => {
 
 
     const { register, handleSubmit, formState: { errors }, } = useForm()
-    const { signUp, profile, }=useContext(Context)
+    const { signUp, profile, } = useContext(Context)
     const [error, setError] = useState('')
     const navigate = useNavigate()
-    
+
 
     const submit = (data) => {
-         const {name,email,password ,image,confirm} = data
+        const { name, email, password, image, confirm } = data
         if (password !== confirm) {
-           setError('confirm password doesnt match')
+            setError('confirm password doesnt match')
         } else {
-            const userObj = { email,password,name }
-            fetch('http://localhost:5000/user', {
+            const userObj = { email, password, name }
+            fetch('https://photography-server-zeta.vercel.app/user', {
                 method: "POST",
                 headers: { 'content-type': 'application/json' },
-                body : JSON.stringify(userObj)
+                body: JSON.stringify(userObj)
             })
                 .then(res => res.json())
                 .then(res => {
@@ -47,12 +47,12 @@ const SignUp = () => {
                                     setError('this email already have an account')
                                 }
                             })
-                }
-            })
-            
-       }
+                    }
+                })
 
-        
+        }
+
+
 
 
     }
@@ -62,7 +62,7 @@ const SignUp = () => {
         <section className="my-11 border rounded-lg mx-auto  px-20 py-11 w-1/2">
             <div className="text-center">
                 <h1 className="font-semibold text-2xl text-emerald-500">SignUp</h1>
-                <hr className="mt-4 border-emerald-400"/>
+                <hr className="mt-4 border-emerald-400" />
             </div>
             <form className="flex flex-col gap-4 mt-8" onSubmit={handleSubmit(submit)}>
 
@@ -91,9 +91,9 @@ const SignUp = () => {
                         minLength: 6,
                         pattern: /(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z])/
                     })} />
-        {errors.password?.type ==='required' && <p className="text-red-500">password is requird</p>}
-    {errors.password?.type ==='minLength' && <p className="text-red-500">password minmum 6 characters</p>}
-    {errors.password?.type ==='pattern' && <p className="text-red-500">password must have a uppercase lowercase and numbers characters</p>}
+                    {errors.password?.type === 'required' && <p className="text-red-500">password is requird</p>}
+                    {errors.password?.type === 'minLength' && <p className="text-red-500">password minmum 6 characters</p>}
+                    {errors.password?.type === 'pattern' && <p className="text-red-500">password must have a uppercase lowercase and numbers characters</p>}
                 </div>
 
                 <div className="form-control w-full">
@@ -117,8 +117,8 @@ const SignUp = () => {
             <p className="font-semibold mt-6 text-center">already have an account ? <Link to='/signin' className="text-emerald-500 font-semibold">Sign In</Link></p>
             <div className="divider">OR</div>
             <div className="ml-36">
-                <SigninProvider redirect='/'/>
-             </div>
+                <SigninProvider redirect='/' />
+            </div>
         </section>
     );
 };

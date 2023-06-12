@@ -5,25 +5,25 @@ import Swal from "sweetalert2";
 import { Context } from "../../Authentication/AuthProvider";
 
 const AddClass = () => {
-    const {user} = useContext(Context)
+    const { user } = useContext(Context)
     const { register, handleSubmit, formState: { errors }, } = useForm()
     const navigate = useNavigate()
 
 
     const submit = (data) => {
-        const { className, price, seat, img } = data   
-       
+        const { className, price, seat, img } = data
+
         const fromData = new FormData()
         fromData.append('image', img[0])
 
 
         fetch(`https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMG_HOST_KEY}`, {
-            method: "POST",   
-            body: fromData    
+            method: "POST",
+            body: fromData
         })
             .then(res => res.json())
             .then(res => {
-                
+
                 if (res.success) {
                     const obj = {
                         instructorName: user?.displayName,
@@ -31,17 +31,17 @@ const AddClass = () => {
                         className,
                         classPrice: price,
                         availableSeats: seat,
-                        totalEnrolled : 0,
+                        totalEnrolled: 0,
                         classImage: res.data.display_url,
-                        status : 'pannding',
+                        status: 'pannding',
                     }
-                    fetch('http://localhost:5000/pannding', {
+                    fetch('https://photography-server-zeta.vercel.app/pannding', {
                         method: "POST",
                         headers: { 'content-type': 'application/json' },
-                        body : JSON.stringify(obj)
+                        body: JSON.stringify(obj)
                     })
-                    
-                    .then(res => res.json())
+
+                        .then(res => res.json())
                         .then(res => {
                             if (res.insertedId) {
                                 navigate('/dashboard/myclass')
@@ -53,10 +53,10 @@ const AddClass = () => {
                                     timer: 1500
                                 })
                             }
-                    })
+                        })
                 }
             })
-        
+
     }
     return (
         <section className="w-[70%] mx-auto">
@@ -104,10 +104,10 @@ const AddClass = () => {
 
                     <div className="form-control w-full max-w-xs">
                         <label className="label">
-                            <span className="label-text">uploade class Image</span> 
+                            <span className="label-text">uploade class Image</span>
                         </label>
                         <input type="file" className="file-input file-input-bordered w-full max-w-xs" {...register('img', { required: true })} />
-                        {errors.img && <p className="text-red-500">Class Image is requird</p>}    
+                        {errors.img && <p className="text-red-500">Class Image is requird</p>}
                     </div>
                 </div>
 

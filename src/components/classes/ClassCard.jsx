@@ -1,6 +1,6 @@
 
 import { useEffect } from 'react';
-import { useContext,useState } from 'react';
+import { useContext, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { Context } from '../Authentication/AuthProvider';
@@ -10,18 +10,18 @@ const ClassCard = ({ obj }) => {
     const { classImage, className, instructorName, classPrice, availableSeats } = obj
     const { user } = useContext(Context)
     const navigate = useNavigate()
-   const location = useLocation()
+    const location = useLocation()
     const [userData, setUser] = useState({})
-    
+
     useEffect(() => {
-        fetch(`http://localhost:5000/user?email=${user?.email}`)
+        fetch(`https://photography-server-zeta.vercel.app/user?email=${user?.email}`)
             .then(res => res.json())
             .then(res => setUser(res))
     }, [user])
 
     const selectHandler = (data) => {
 
-        
+
 
         if (user) {
             const selectedData = {
@@ -32,7 +32,7 @@ const ClassCard = ({ obj }) => {
                 className
             }
 
-            fetch('http://localhost:5000/select', {
+            fetch('https://photography-server-zeta.vercel.app/select', {
                 method: "POST",
                 headers: { 'content-type': 'application/json' },
                 body: JSON.stringify(selectedData)
@@ -60,19 +60,19 @@ const ClassCard = ({ obj }) => {
                 confirmButtonText: 'sign In'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    navigate('/signin',{state:{from:location}})
+                    navigate('/signin', { state: { from: location } })
                 }
             })
         }
-        
-          
-        
+
+
+
     }
     return (
         <div className={`grid layout border p-5 rounded-lg ${availableSeats == 0 ? 'bg-red-400' : 'bg-base-200'}`}>
             <div className="avatar">
                 <div className="w-32 rounded-xl">
-                <img src={classImage} />
+                    <img src={classImage} />
                 </div>
             </div>
             <div className=" ">
@@ -83,10 +83,10 @@ const ClassCard = ({ obj }) => {
                 </div>
                 <div className='flex justify-between items-center mt-5'>
                     <p> Course Fee -<span className='text-yellow-400 font-semibold text-xl'>${classPrice}</span></p>
-                    <button onClick={()=>selectHandler(obj)} disabled={availableSeats == 0 || userData.role == 'admin' || userData.role == 'instructor' ? true : false} className="btn bg-emerald-500">Select</button>
-               </div> 
+                    <button onClick={() => selectHandler(obj)} disabled={availableSeats == 0 || userData.role == 'admin' || userData.role == 'instructor' ? true : false} className="btn bg-emerald-500">Select</button>
+                </div>
             </div>
-         </div>
+        </div>
     );
 };
 

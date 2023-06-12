@@ -1,24 +1,24 @@
 import { useQuery } from "@tanstack/react-query";
- 
+
 import Swal from "sweetalert2";
 
- 
+
 
 const ManageClass = () => {
-     
-    const {data:panndingData=[],refetch } = useQuery({
+
+    const { data: panndingData = [], refetch } = useQuery({
         queryKey: ['pannding'],
         queryFn: async () => {
-            const fetching = await fetch('http://localhost:5000/pannding')
+            const fetching = await fetch('https://photography-server-zeta.vercel.app/pannding')
             const result = fetching.json()
             return result
         }
-})
-    const approvedHandler = (id,status) => {
-        fetch(`http://localhost:5000/pannding/${id}`, {
+    })
+    const approvedHandler = (id, status) => {
+        fetch(`https://photography-server-zeta.vercel.app/pannding/${id}`, {
             method: "PATCH",
             headers: { 'content-type': 'application/json' },
-            body : JSON.stringify({status:status})
+            body: JSON.stringify({ status: status })
         })
             .then(res => res.json())
             .then(res => {
@@ -32,12 +32,12 @@ const ManageClass = () => {
                         timer: 1500
                     })
                 }
-        })
+            })
     }
 
-     
-     
-    
+
+
+
 
     return (
         <div className="overflow-x-auto w-full my-11 ml-6 p-11">
@@ -58,23 +58,23 @@ const ManageClass = () => {
                                 <th>{index + 1}</th>
                                 <td>
                                     <div className="mask mask-squircle w-12 h-12">
-                                       <img src={value.classImage} alt="" />
+                                        <img src={value.classImage} alt="" />
                                     </div>
                                 </td>
                                 <td>{value.className}</td>
                                 <td>${value.classPrice}</td>
                                 <td className="flex gap-3">
                                     <button
-                                        onClick={() => approvedHandler(value._id,'approved')}
-                                        disabled={value?.status == 'approved' || value?.status == 'deny'  ? true : false}
+                                        onClick={() => approvedHandler(value._id, 'approved')}
+                                        disabled={value?.status == 'approved' || value?.status == 'deny' ? true : false}
                                         className="p-2 rounded-lg bg-yellow-300 btn">
-                                       Approved
+                                        Approved
                                     </button>
                                     <button
-                                        onClick={() => approvedHandler(value._id,'deny')}
+                                        onClick={() => approvedHandler(value._id, 'deny')}
                                         disabled={value?.status == 'approved' || value?.status == 'deny' ? true : false}
                                         className="p-2 btn rounded-lg bg-emerald-400">
-                                       Deny
+                                        Deny
                                     </button>
                                 </td>
                             </tr>
