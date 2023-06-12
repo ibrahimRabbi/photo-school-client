@@ -33,7 +33,7 @@ const AddClass = () => {
                         classImage: res.data.display_url,
                         status : 'pannding',
                     }
-                    fetch('http://localhost:5000/class', {
+                    fetch('http://localhost:5000/pannding', {
                         method: "POST",
                         headers: { 'content-type': 'application/json' },
                         body : JSON.stringify(obj)
