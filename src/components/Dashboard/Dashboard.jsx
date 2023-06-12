@@ -1,15 +1,23 @@
-import {  Outlet } from "react-router-dom";
+import {  Link, Outlet } from "react-router-dom";
 import ActiveLink from "../utility/ActiveLink";
 import { BiSelectMultiple, BiBookReader} from 'react-icons/bi'
 import { MdPayment } from 'react-icons/md'
 import { AiOutlineCrown, AiOutlineFolderAdd } from 'react-icons/ai'
 import { FaHome, FaSignOutAlt } from 'react-icons/fa'
+import useUserHook from "../Hooks/useUserHook";
 
  
 
 const Dashboard = () => {
 
-    const role = true;
+     const {userData,refetch} = useUserHook()
+
+  
+     
+
+    
+
+    
     return (
         <section className="">
             <div className="drawer lg:drawer-open">
@@ -25,15 +33,21 @@ const Dashboard = () => {
                     <ul className="menu p-4 w-80 h-full bg-emerald-400 text-lg font-semibold text-gray-600">
                       
                     {
-                            role ? <>
-                                <li><ActiveLink to='addclass'><AiOutlineFolderAdd />Add Class</ActiveLink></li>
-                                <li><ActiveLink to='myclass'><AiOutlineCrown/>My Classes</ActiveLink></li>
+                           (userData[0]?.role === 'admin') ? <>
+                                <li><ActiveLink to='manageClass'>Manage Class</ActiveLink></li>
+                                <li><ActiveLink to='manageUser'>Manage User</ActiveLink></li>
+
+                            </> : (userData[0]?.role === 'instructor') ? <>
+                                    <li><ActiveLink to='addclass'><AiOutlineFolderAdd />Add Class</ActiveLink></li>
+                                    <li><ActiveLink to='myclass'><AiOutlineCrown />My Classes</ActiveLink></li>
                             </> : <>
-                                    <li><ActiveLink to='selecetClass'> <BiSelectMultiple />selected Classes</ActiveLink></li>
-                                    <li><ActiveLink to='enrolled'><MdPayment />Enrolled Classes</ActiveLink></li>
-                                    <li><ActiveLink to='payhistory'><MdPayment />Payment History</ActiveLink></li>
-                                </> 
+                                <li><ActiveLink to='selecetClass'> <BiSelectMultiple />selected Classes</ActiveLink></li>
+                                <li><ActiveLink to='enrolled'><MdPayment />Enrolled Classes</ActiveLink></li>
+                                <li><ActiveLink to='payhistory'><MdPayment />Payment History</ActiveLink></li>
+                            </> 
                     }
+                        
+                        
                         <div className="divider"></div>
                         <li><ActiveLink to='/'><FaHome/>Home</ActiveLink></li>
                         <li><ActiveLink to='/classes'><BiBookReader/>Classes</ActiveLink></li>
@@ -47,3 +61,7 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
+
+
+  

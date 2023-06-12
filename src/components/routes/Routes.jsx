@@ -1,5 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Classes from "../classes/Classes";
+import ManageClass from "../Dashboard/adminDashboard/ManageClass";
+import ManageUser from "../Dashboard/adminDashboard/ManageUser";
 import Dashboard from "../Dashboard/Dashboard";
 import AddClass from "../Dashboard/instructorDashboard/AddClass";
 import MayClass from "../Dashboard/instructorDashboard/MayClass";
@@ -78,6 +80,15 @@ const router = createBrowserRouter([
             {
                 path: 'updateClass/:id',
                 element : <UpdateClass/>
+            },
+            /*** admin route */
+            {
+                path: 'manageUser',
+                element : <ManageUser/>
+            },
+            {
+                path: 'manageClass',
+                element : <ManageClass/>
             },
         ]
     }

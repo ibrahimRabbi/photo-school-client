@@ -1,34 +1,62 @@
 //  import { useState } from 'react';
  
 import { useContext } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { Context } from '../Authentication/AuthProvider';
 import './class.css'
 
 const ClassCard = ({ obj }) => {
     const { classImage, className, instructorName, classPrice, availableSeats } = obj
-    const {user}=useContext(Context)
-
+    const { user } = useContext(Context)
+    const navigate = useNavigate()
+   const location = useLocation()
     const selectHandler = (data) => {
-        const selectedData = {classId: data._id, userEmail : user.email, classImage,classPrice,className}
-          
-        fetch('http://localhost:5000/select', {
-            method: "POST",
-            headers: { 'content-type': 'application/json' },
-            body:JSON.stringify(selectedData)
-        })
-        .then(res=>res.json())
-            .then(res => {
-                if (res.insertedId) {
-                    Swal.fire({
-                        position: 'top-end',
-                        icon: 'success',
-                        title: `${className} selected`,
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
+
+        if (user) {
+            const selectedData = {
+                classId: data._id,
+                userEmail: user.email,
+                classImage,
+                classPrice,
+                className
             }
-        })
+
+            fetch('http://localhost:5000/select', {
+                method: "POST",
+                headers: { 'content-type': 'application/json' },
+                body: JSON.stringify(selectedData)
+            })
+                .then(res => res.json())
+                .then(res => {
+                    if (res.insertedId) {
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: `${className} selected`,
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                    }
+                })
+        } else {
+            Swal.fire({
+                title: 'you are not login',
+                text: "sign in first then you can access class select option",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'sign In'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    navigate('/signin',{state:{from:location}})
+                }
+            })
+        }
+        
+          
+        
     }
     return (
         <div className={`grid layout border p-5 rounded-lg ${availableSeats == 0 ? 'bg-red-400' : 'bg-base-200'}`}>

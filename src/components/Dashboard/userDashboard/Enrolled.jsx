@@ -17,10 +17,8 @@ const Enrolled = () => {
       
     return (
         
-        <div className="overflow-x-auto w-full my-11 ml-6 p-11">
-             
+        <div className="overflow-x-auto w-full my-11 ml-6 p-11">         
             <table className="table w-full">
-
                 <thead className='bg-emerald-400 text-lg'>
                     <tr>
                         <th>number</th>
@@ -49,7 +47,6 @@ const Enrolled = () => {
                         )
                     })}
                 </tbody>
-
             </table>
         </div>
     );

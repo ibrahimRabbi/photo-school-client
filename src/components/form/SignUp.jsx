@@ -20,23 +20,35 @@ const SignUp = () => {
         if (password !== confirm) {
            setError('confirm password doesnt match')
         } else {
-            signUp(email, password)
+            const userObj = { email,password,name }
+            fetch('http://localhost:5000/user', {
+                method: "POST",
+                headers: { 'content-type': 'application/json' },
+                body : JSON.stringify(userObj)
+            })
+                .then(res => res.json())
                 .then(res => {
-                    profile(res.user, name, image)
-                    setError('')
-                    Swal.fire({
-                        title: 'registation Successfull',
-                        text: 'now you can access any kind of information',
-                        icon: 'success',
-                        confirmButtonText: 'Okay'
-                    })
-                    navigate('/')
-                })
-                .catch(error => {
-                    if (error.message == "Firebase: Error (auth/email-already-in-use).") {
-                        setError('this email already have an account')
-                    }
-                })
+                    if (res.insertedId) {
+                        signUp(email, password)
+                            .then(res => {
+                                profile(res.user, name, image)
+                                setError('')
+                                Swal.fire({
+                                    title: 'registation Successfull',
+                                    text: 'now you can access any kind of information',
+                                    icon: 'success',
+                                    confirmButtonText: 'Okay'
+                                })
+                                navigate('/')
+                            })
+                            .catch(error => {
+                                if (error.message == "Firebase: Error (auth/email-already-in-use).") {
+                                    setError('this email already have an account')
+                                }
+                            })
+                }
+            })
+            
        }
 
         
