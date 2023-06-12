@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { useState,useEffect } from "react";
+ 
 import Swal from "sweetalert2";
 
  
@@ -14,11 +14,11 @@ const ManageClass = () => {
             return result
         }
 })
-    const approvedHandler = (id) => {
+    const approvedHandler = (id,status) => {
         fetch(`http://localhost:5000/pannding/${id}`, {
             method: "PATCH",
             headers: { 'content-type': 'application/json' },
-            body : JSON.stringify({status:'approved'})
+            body : JSON.stringify({status:status})
         })
             .then(res => res.json())
             .then(res => {
@@ -27,7 +27,7 @@ const ManageClass = () => {
                     Swal.fire({
                         position: 'top-end',
                         icon: 'success',
-                        title: `${name} now Admin`,
+                        title: `class approved successfylly`,
                         showConfirmButton: false,
                         timer: 1500
                     })
@@ -35,7 +35,7 @@ const ManageClass = () => {
         })
     }
 
-
+     
      
     
 
@@ -65,13 +65,14 @@ const ManageClass = () => {
                                 <td>${value.classPrice}</td>
                                 <td className="flex gap-3">
                                     <button
-                                        onClick={() => approvedHandler(value._id, value.name)}
+                                        onClick={() => approvedHandler(value._id,'approved')}
                                         disabled={value?.status == 'approved' || value?.status == 'deny'  ? true : false}
                                         className="p-2 rounded-lg bg-yellow-300 btn">
                                        Approved
                                     </button>
                                     <button
-                                        disabled={value?.role == 'instructor' ? true : false}
+                                        onClick={() => approvedHandler(value._id,'deny')}
+                                        disabled={value?.status == 'approved' || value?.status == 'deny' ? true : false}
                                         className="p-2 btn rounded-lg bg-emerald-400">
                                        Deny
                                     </button>

@@ -1,16 +1,18 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { Context } from "../../Authentication/AuthProvider";
 
 const AddClass = () => {
     const {user} = useContext(Context)
     const { register, handleSubmit, formState: { errors }, } = useForm()
-   
+    const navigate = useNavigate()
 
 
     const submit = (data) => {
         const { className, price, seat, img } = data   
+       
         const fromData = new FormData()
         fromData.append('image', img[0])
 
@@ -42,6 +44,7 @@ const AddClass = () => {
                     .then(res => res.json())
                         .then(res => {
                             if (res.insertedId) {
+                                navigate('/dashboard/myclass')
                                 Swal.fire({
                                     position: 'top-end',
                                     icon: 'success',

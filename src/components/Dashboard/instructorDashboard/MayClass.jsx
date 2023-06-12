@@ -1,10 +1,9 @@
-
-
 import { FaTrash, FaEdit } from 'react-icons/fa';
 import { BiMessageDetail } from 'react-icons/bi'
 import Swal from 'sweetalert2';
 import useMyClass from '../../Hooks/useMyClass';
 import { Link } from 'react-router-dom';
+ 
 
 
 
@@ -12,12 +11,12 @@ import { Link } from 'react-router-dom';
 const MayClass = () => {
 
     const {datas,refetch} = useMyClass()
-
+  
 
     const deleteHandler = (id) => {
         Swal.fire({
             title: 'Are you sure?',
-            text: "do you want tio delete this?",
+            text: "do you want to delete this?",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -25,7 +24,7 @@ const MayClass = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/class/${id}`, {
+                fetch(`http://localhost:5000/pannding/${id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())

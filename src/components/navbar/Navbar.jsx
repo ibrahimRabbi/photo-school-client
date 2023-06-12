@@ -64,10 +64,6 @@ const Navbar = () => {
                         <li><ActiveLink to='/classes'>classes</ActiveLink></li>
                         {user ? <>
                             <li><ActiveLink to='/dashboard'>Dashboard</ActiveLink></li>
-                            <li className='relative'>
-                                <span className='absolute -end-8 badge badge-primary'>new</span>
-                                <ActiveLink to='/dashboard'>seleted Classes</ActiveLink>
-                            </li>
                                 </>
                               : ''}
                         </ul>

@@ -1,8 +1,9 @@
-import React, { useContext } from 'react';
-import { Context } from '../Authentication/AuthContext';
+import { useContext } from 'react';
+ 
 import { FaGoogle } from 'react-icons/fa'
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
+import { Context } from '../Authentication/AuthProvider';
 
 
 const SigninProvider = ({ redirect }) => {
@@ -13,15 +14,17 @@ const SigninProvider = ({ redirect }) => {
     const googleHandler = () => {
         signinGoogle()
             .then(res => {
-                navigate(redirect)
-                Swal.fire({
-                    title: 'Sign in Successfull',
-                    text: 'keep Rock',
-                    icon: 'success',
-                    confirmButtonText: 'Cool'
+                fetch('http://localhost:5000/user', {
+                    method: "POST",
+                    headers: { 'content-type': 'application/json' },
+                    body: JSON.stringify({ email: res.user.email, name: res.user.displayName })
+                })
+                    .then(res => res.json())
+                    .then(() => {
+                            navigate(redirect)    
                 })
             })
-            .catch(error => console.log(error))
+        .catch(err=>console.log(err))
     }
 
 
@@ -34,3 +37,6 @@ const SigninProvider = ({ redirect }) => {
 };
 
 export default SigninProvider;
+
+
+

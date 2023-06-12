@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../Authentication/AuthProvider";
 import Swal from 'sweetalert2'
+import SigninProvider from "./SigninProvider";
 
 
 
@@ -115,6 +116,9 @@ const SignUp = () => {
             </form>
             <p className="font-semibold mt-6 text-center">already have an account ? <Link to='/signin' className="text-emerald-500 font-semibold">Sign In</Link></p>
             <div className="divider">OR</div>
+            <div className="ml-36">
+                <SigninProvider redirect='/'/>
+             </div>
         </section>
     );
 };
