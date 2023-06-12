@@ -15,12 +15,14 @@ import SignUp from "../form/SignUp";
 import HomeComponents from "../home/HomeComponents";
 import Instructors from "../instructors/Instructors";
 import HomeLayout from "../layout/HomeLayout";
+import Error from "../utility/Error";
  
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <HomeLayout />,
+        errorElement : <Error/>,
         children: [
             {
                 path: '/',
