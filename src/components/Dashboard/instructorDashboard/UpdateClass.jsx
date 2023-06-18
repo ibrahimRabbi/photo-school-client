@@ -6,18 +6,21 @@ import Swal from "sweetalert2";
 
 
 const UpdateClass = () => {
-    const [image, setImage] = useState('')
     const param = useParams()
     const [data, setdata] = useState({})
-    const url = `https://photography-server-zeta.vercel.app/class/${param.id}`
+    const [image, setImage] = useState('')
+    const url = ` http://localhost:5000/pannding/${param.id}`
 
     useEffect(() => {
         fetch(url)
             .then(res => res.json())
-            .then(res => setdata(res))
+            .then(res => {
+                setdata(res)
+                setImage(res.image)
+            } )
     }, [url])
 
-
+  console.log(image)
 
 
     const handleSubmit = (e) => {
@@ -26,24 +29,26 @@ const UpdateClass = () => {
         const classPrice = e.target.price.value
         const availableSeats = e.target.seat.value
 
+ 
+       if(e.target.img?.files[0]){
+           const fromData = new FormData()
+           fromData.append('image', e.target.img.files[0])
 
-        const fromData = new FormData()
-        fromData.append('image', e.target.img.files[0])
+           fetch(`https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMG_HOST_KEY}`, {
+               method: "POST",
+               body: fromData
+           })
+               .then(res => res.json())
+               .then(res => {
+                   setImage(res.data?.display_url)
+               })
 
-        fetch(`https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMG_HOST_KEY}`, {
-            method: "POST",
-            body: fromData
-        })
-            .then(res => res.json())
-            .then(res => {
-                setImage(res.data.display_url)
-            })
+       }
 
-
-        fetch((`https://photography-server-zeta.vercel.app/update/${param.id}`), {
+        fetch((` http://localhost:5000/pannding/${param.id}`), {
             method: "PATCH",
             headers: { 'content-type': 'application/json' },
-            body: JSON.stringify({ className, classPrice, availableSeats, img: image })
+            body: JSON.stringify({ className, classPrice, availableSeats,image})
         })
             .then(res => res.json())
             .then(res => {

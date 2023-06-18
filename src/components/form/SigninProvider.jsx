@@ -14,7 +14,7 @@ const SigninProvider = ({ redirect }) => {
     const googleHandler = () => {
         signinGoogle()
             .then(res => {
-                fetch('https://photography-server-zeta.vercel.app/user', {
+                fetch(' http://localhost:5000/user', {
                     method: "POST",
                     headers: { 'content-type': 'application/json' },
                     body: JSON.stringify({ email: res.user.email, name: res.user.displayName })

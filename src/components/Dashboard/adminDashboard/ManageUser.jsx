@@ -12,7 +12,7 @@ const ManageUser = () => {
 
 
     const adminMakeHandler = (id, name, data) => {
-        fetch(`https://photography-server-zeta.vercel.app/user/${id}`, {
+        fetch(` http://localhost:5000/user/${id}`, {
             method: "PATCH",
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify({ role: data })

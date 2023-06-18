@@ -29,13 +29,13 @@ const AddClass = () => {
                         instructorName: user?.displayName,
                         instructorEmail: user?.email,
                         className,
-                        classPrice: price,
-                        availableSeats: seat,
+                        classPrice : price,
+                        availableSeats:seat,
                         totalEnrolled: 0,
-                        classImage: res.data.display_url,
+                        classImage:res.data.display_url,
                         status: 'pannding',
                     }
-                    fetch('https://photography-server-zeta.vercel.app/pannding', {
+                    fetch(' http://localhost:5000/pannding', {
                         method: "POST",
                         headers: { 'content-type': 'application/json' },
                         body: JSON.stringify(obj)

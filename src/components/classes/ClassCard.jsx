@@ -14,7 +14,7 @@ const ClassCard = ({ obj }) => {
     const [userData, setUser] = useState({})
 
     useEffect(() => {
-        fetch(`https://photography-server-zeta.vercel.app/user?email=${user?.email}`)
+        fetch(` http://localhost:5000/user?email=${user?.email}`)
             .then(res => res.json())
             .then(res => setUser(res))
     }, [user])
@@ -32,7 +32,7 @@ const ClassCard = ({ obj }) => {
                 className
             }
 
-            fetch('https://photography-server-zeta.vercel.app/select', {
+            fetch(' http://localhost:5000/select', {
                 method: "POST",
                 headers: { 'content-type': 'application/json' },
                 body: JSON.stringify(selectedData)

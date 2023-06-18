@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 const MayClass = () => {
 
     const { datas, refetch } = useMyClass()
-
+ 
 
     const deleteHandler = (id) => {
         Swal.fire({
@@ -24,7 +24,7 @@ const MayClass = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://photography-server-zeta.vercel.app/pannding/${id}`, {
+                fetch(` http://localhost:5000/pannding/${id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())

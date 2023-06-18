@@ -9,19 +9,23 @@ const ManageClass = () => {
     const { data: panndingData = [], refetch } = useQuery({
         queryKey: ['pannding'],
         queryFn: async () => {
-            const fetching = await fetch('https://photography-server-zeta.vercel.app/pannding')
+            const fetching = await fetch(' http://localhost:5000/pannding')
             const result = fetching.json()
             return result
         }
     })
+
+
+
     const approvedHandler = (id, status) => {
-        fetch(`https://photography-server-zeta.vercel.app/pannding/${id}`, {
+        fetch(` http://localhost:5000/status/${id}`, {
             method: "PATCH",
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify({ status: status })
         })
             .then(res => res.json())
             .then(res => {
+                
                 if (res.modifiedCount > 0) {
                     refetch()
                     Swal.fire({
@@ -46,9 +50,9 @@ const ManageClass = () => {
                     <tr>
                         <th>number</th>
                         <th>Image</th>
-                        <th>Name</th>
+                        <th><span className="ml-11">Name</span></th>
                         <th>Price</th>
-                        <th>Action</th>
+                        <th><span className="ml-11">Action</span></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -67,13 +71,13 @@ const ManageClass = () => {
                                     <button
                                         onClick={() => approvedHandler(value._id, 'approved')}
                                         disabled={value?.status == 'approved' || value?.status == 'deny' ? true : false}
-                                        className="p-2 rounded-lg bg-yellow-300 btn">
+                                        className=" rounded-lg bg-yellow-300 btn">
                                         Approved
                                     </button>
                                     <button
                                         onClick={() => approvedHandler(value._id, 'deny')}
                                         disabled={value?.status == 'approved' || value?.status == 'deny' ? true : false}
-                                        className="p-2 btn rounded-lg bg-emerald-400">
+                                        className="btn rounded-lg bg-emerald-400">
                                         Deny
                                     </button>
                                 </td>

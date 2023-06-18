@@ -22,18 +22,19 @@ const SignUp = () => {
             setError('confirm password doesnt match')
         } else {
             const userObj = { email, password, name }
-            fetch('https://photography-server-zeta.vercel.app/user', {
-                method: "POST",
-                headers: { 'content-type': 'application/json' },
-                body: JSON.stringify(userObj)
-            })
-                .then(res => res.json())
+
+            signUp(email, password)
                 .then(res => {
-                    if (res.insertedId) {
-                        signUp(email, password)
-                            .then(res => {
-                                profile(res.user, name, image)
-                                setError('')
+                    profile(res.user, name, image)
+                    setError('')
+                    fetch('http://localhost:5000/user', {
+                        method: "POST",
+                        headers: { 'content-type': 'application/json' },
+                        body: JSON.stringify(userObj)
+                    })
+                        .then(res => res.json())
+                        .then(res => {
+                            if (res.insertedId) {
                                 Swal.fire({
                                     title: 'registation Successfull',
                                     text: 'now you can access any kind of information',
@@ -41,21 +42,23 @@ const SignUp = () => {
                                     confirmButtonText: 'Okay'
                                 })
                                 navigate('/')
-                            })
-                            .catch(error => {
-                                if (error.message == "Firebase: Error (auth/email-already-in-use).") {
-                                    setError('this email already have an account')
-                                }
-                            })
+                            }
+                        })
+
+                })
+                .catch(error => {
+                    if (error.message == "Firebase: Error (auth/email-already-in-use).") {
+                        setError('this email already have an account')
                     }
                 })
-
         }
 
 
-
-
     }
+
+
+
+
 
 
     return (

@@ -26,7 +26,7 @@ const SelectedClass = () => {
         }).then((result) => {
 
             if (result.isConfirmed) {
-                fetch(`https://photography-server-zeta.vercel.app/select/${id}`, {
+                fetch(` http://localhost:5000/select/${id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())

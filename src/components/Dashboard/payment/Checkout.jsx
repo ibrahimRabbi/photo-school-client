@@ -73,7 +73,7 @@ const CheckoutForm = ({ price, id }) => {
                 selecetClassId: dataObj._id,
                 classId: dataObj.classId
             }
-            fetch("https://photography-server-zeta.vercel.app/summery", {
+            fetch(" http://localhost:5000/summery", {
                 method: "POST",
                 headers: { 'content-type': 'application/json' },
                 body: JSON.stringify(summery)
@@ -102,7 +102,7 @@ const CheckoutForm = ({ price, id }) => {
 
     useEffect(() => {
         if (price > 0) {
-            fetch("https://photography-server-zeta.vercel.app/create-payment-intent", {
+            fetch(" http://localhost:5000/create-payment-intent", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ price }),

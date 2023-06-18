@@ -8,7 +8,7 @@ const Enrolled = () => {
     const { user } = useContext(Context)
 
     useEffect(() => {
-        fetch(`https://photography-server-zeta.vercel.app/class?email=${user?.email}`)
+        fetch(` http://localhost:5000/class?email=${user?.email}`)
             .then(res => res.json())
             .then(res => setData(res))
     }, [user])
