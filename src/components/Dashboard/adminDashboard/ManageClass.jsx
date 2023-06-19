@@ -46,13 +46,13 @@ const ManageClass = () => {
     return (
         <div className="overflow-x-auto w-full my-11 ml-6 p-11">
             <table className="table w-full">
-                <thead className='bg-emerald-400'>
+                <thead className='bg-purple-700 text-slate-50'>
                     <tr>
                         <th>number</th>
                         <th>Image</th>
                         <th><span className="ml-11">Name</span></th>
                         <th>Price</th>
-                        <th><span className="ml-11">Action</span></th>
+                        <th><span className="ml-20">Action</span></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -66,18 +66,18 @@ const ManageClass = () => {
                                     </div>
                                 </td>
                                 <td>{value.className}</td>
-                                <td>${value.classPrice}</td>
+                                <th>${value.classPrice}</th>
                                 <td className="flex gap-3">
                                     <button
                                         onClick={() => approvedHandler(value._id, 'approved')}
                                         disabled={value?.status == 'approved' || value?.status == 'deny' ? true : false}
-                                        className=" rounded-lg bg-yellow-300 btn">
+                                        className=" rounded-lg bg-pink-600 text-slate-50 btn">
                                         Approved
                                     </button>
                                     <button
                                         onClick={() => approvedHandler(value._id, 'deny')}
                                         disabled={value?.status == 'approved' || value?.status == 'deny' ? true : false}
-                                        className="btn rounded-lg bg-emerald-400">
+                                        className="btn bg-purple-700 text-slate-50">
                                         Deny
                                     </button>
                                 </td>

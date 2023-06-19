@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { Context } from "../../Authentication/AuthProvider";
+import TitleBar from "../../utility/TitleBar";
 
 const AddClass = () => {
     const { user } = useContext(Context)
@@ -59,20 +60,24 @@ const AddClass = () => {
 
     }
     return (
-        <section className="w-[70%] mx-auto">
-            <form className="border p-16 flex flex-col gap-6" onSubmit={handleSubmit(submit)}>
+        <section className="w-[70%] bg-slate-200 rounded-lg shadow-lg mx-auto">
+            <div className="w-[80%] mx-auto">
+                <h1 className="title mt-11 text-center text-4xl">Add Class</h1>
+                <hr className="border border-pink-700 mt-3" />
+           </div>
+            <form className="border px-16 py-6 flex flex-col gap-6" onSubmit={handleSubmit(submit)}>
                 <div className="flex gap-6">
                     <div className="form-control w-full">
                         <label className="label">
                             <span className="label-text">your Name</span>
                         </label>
-                        <input defaultValue={user?.displayName} className="border border-emerald-400 p-2" placeholder="Name" readOnly />
+                        <input defaultValue={user?.displayName} className="border border-pink-700 rounded-2xl p-2" placeholder="Name" readOnly />
                     </div>
                     <div className="form-control w-full">
                         <label className="label">
                             <span className="label-text">email</span>
                         </label>
-                        <input defaultValue={user?.email} className="border border-emerald-400 p-2" placeholder="email" readOnly />
+                        <input defaultValue={user?.email} className="border border-pink-700 rounded-2xl p-2" placeholder="email" readOnly />
                     </div>
                 </div>
 
@@ -81,14 +86,14 @@ const AddClass = () => {
                         <label className="label">
                             <span className="label-text">Class name</span>
                         </label>
-                        <input className="border border-emerald-400 p-2" placeholder="class name" {...register('className', { required: true })} />
+                        <input className="border border-pink-700 rounded-2xl p-2" placeholder="class name" {...register('className', { required: true })} />
                         {errors.className && <p className="text-red-500">className is required</p>}
                     </div>
                     <div className="form-control w-full">
                         <label className="label">
                             <span className="label-text">Class price</span>
                         </label>
-                        <input type='number' className="border border-emerald-400 p-2" placeholder="price" {...register('price', { required: true })} />
+                        <input type='number' className="border border-pink-700 rounded-2xl p-2" placeholder="price" {...register('price', { required: true })} />
                         {errors.price && <p className="text-red-500">price is required</p>}
                     </div>
                 </div>
@@ -98,7 +103,7 @@ const AddClass = () => {
                         <label className="label">
                             <span className="label-text">Available Seat</span>
                         </label>
-                        <input type='number' className="border border-emerald-400 p-2" placeholder="type number" {...register('seat', { required: true })} />
+                        <input type='number' className="border border-pink-700 rounded-2xl p-2" placeholder="type number" {...register('seat', { required: true })} />
                         {errors.seat && <p className="text-red-500">available seat is requird</p>}
                     </div>
 
@@ -111,7 +116,7 @@ const AddClass = () => {
                     </div>
                 </div>
 
-                <input className="btn bg-emerald-400 " type="submit" />
+                <input className="btn bg-gradient-to-r from-purple-600 to-pink-600 text-slate-50" type="submit" />
             </form>
         </section>
     );

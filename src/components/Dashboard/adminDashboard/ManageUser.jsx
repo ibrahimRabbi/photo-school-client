@@ -36,13 +36,13 @@ const ManageUser = () => {
     return (
         <div className="overflow-x-auto w-full my-11 ml-6 p-11">
             <table className="table w-full">
-                <thead className='bg-emerald-400'>
+                <thead className='bg-purple-700 text-slate-50'>
                     <tr>
                         <th>number</th>
                         <th>Email</th>
                         <th>Name</th>
                         <th>Role</th>
-                        <th>Action</th>
+                        <th><span className="ml-24">Action</span></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -57,13 +57,13 @@ const ManageUser = () => {
                                     <button
                                         onClick={() => adminMakeHandler(value._id, value.name, 'admin')}
                                         disabled={value?.role == 'admin' ? true : false}
-                                        className="p-2 rounded-lg bg-yellow-300 btn">
+                                        className="p-2 rounded-lg bg-purple-700 text-slate-50 btn">
                                         make admin
                                     </button>
                                     <button
                                         onClick={() => adminMakeHandler(value._id, value.name, 'instructor')}
                                         disabled={value?.role == 'instructor' ? true : false}
-                                        className="p-2 btn rounded-lg bg-emerald-400">
+                                        className="p-2 btn rounded-lg bg-pink-500 text-slate-50">
                                         make Instructor
                                     </button>
                                 </td>

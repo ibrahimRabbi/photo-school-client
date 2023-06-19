@@ -9,11 +9,6 @@ import useSelectedData from '../../Hooks/useSelecet';
 const SelectedClass = () => {
     const { selectedData, refetch } = useSelectedData()
 
-    // let total = 0
-    // for (let index = 0; index < selectedData.length; index++) {
-    //     total = total + selectedData[0].classPrice
-    // }
-
     const deleteHandler = (id) => {
         Swal.fire({
             title: 'Are you sure?',
@@ -55,13 +50,14 @@ const SelectedClass = () => {
             </div>
             <table className="table w-full">
 
-                <thead className='bg-emerald-400 text-lg'>
-                    <tr>
+                <thead className='bg-purple-700'>
+                    <tr className='text-slate-50'>
                         <th>number</th>
                         <th>image</th>
                         <th>name</th>
                         <th>Price</th>
-                        <th>Action</th>
+                        <th><span className='ml-6'>Action</span></th>
+                       
                     </tr>
                 </thead>
                 <tbody>
@@ -76,10 +72,12 @@ const SelectedClass = () => {
                                 </td>
                                 <td>{value.className}</td>
                                 <th>${value.classPrice}</th>
-                                <th className='flex gap-4 items-center'>
+                                <td className='flex gap-4 items-center'>
                                     <button onClick={() => deleteHandler(value._id)} className='text-red-600 text-2xl border p-2 rounded-lg'><FaTrash /></button>
-                                    <Link to={`/dashboard/payment/${value._id}`} className=' border p-2 rounded-lg' state={{ total: value.classPrice }}><BiCreditCard className='text-emerald-400 text-2xl' /></Link>
-                                </th>
+                               
+                                
+                                    <Link to={`/dashboard/payment/${value._id}`} className=' border p-2 rounded-lg' state={{ total: value.classPrice }}><BiCreditCard className='text-emerald-600 text-2xl' /></Link>
+                                </td>
                             </tr>
                         )
                     })}

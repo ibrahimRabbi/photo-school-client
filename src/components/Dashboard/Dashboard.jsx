@@ -9,7 +9,7 @@ import { useContext } from "react";
 import { Context } from "../Authentication/AuthProvider";
 import { useState } from "react";
 import { useEffect } from "react";
-
+import './dasboard.css'
 
 
 
@@ -39,25 +39,25 @@ const Dashboard = () => {
 
                 <div className="drawer-side">
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                    <ul className="menu p-4 w-80 h-full bg-emerald-400 text-lg font-semibold text-gray-600">
+                    <ul className="menu p-4 w-80 h-full bg-slate-200 text-lg text-gray-700 font-semibold">
                         {
                             (userData[0]?.role === 'admin') ? <>
-                                <li><ActiveLink to='manageClass'><MdClass /> Manage Class</ActiveLink></li>
-                                <li><ActiveLink to='manageUser'><BiUser /> Manage User</ActiveLink></li>
+                                <li className="bg-slate-50 shadow-md rounded-lg mt-3 effect"><ActiveLink to='manageClass'><MdClass/> Manage Class</ActiveLink></li>
+                                <li className="bg-slate-50 shadow-md rounded-lg mt-3 effect"><ActiveLink to='manageUser'><BiUser /> Manage User</ActiveLink></li>
 
                             </> : (userData[0]?.role === 'instructor') ? <>
-                                <li><ActiveLink to='addclass'><AiOutlineFolderAdd />Add Class</ActiveLink></li>
-                                <li><ActiveLink to='myclass'><AiOutlineCrown />My Classes</ActiveLink></li>
+                                <li className="bg-slate-50 shadow-md rounded-lg mt-3 effect"><ActiveLink to='addclass'><AiOutlineFolderAdd/>Add Class</ActiveLink></li>
+                                    <li className="bg-slate-50 shadow-md rounded-lg mt-3 effect"><ActiveLink to='myclass'><AiOutlineCrown/>My Classes</ActiveLink></li>
                             </> : <>
-                                <li><ActiveLink to='selecetClass'> <BiSelectMultiple />selected Classes</ActiveLink></li>
-                                <li><ActiveLink to='enrolled'><MdPayment />Enrolled Classes</ActiveLink></li>
-                                <li><ActiveLink to='payhistory'><MdPayment />Payment History</ActiveLink></li>
+                                        <li className="bg-slate-50 shadow-md rounded-lg mt-3 effect"><ActiveLink to='selecetClass'> <BiSelectMultiple/>selected Classes</ActiveLink></li>
+                                        <li className="bg-slate-50 shadow-md rounded-lg mt-3 effect"><ActiveLink to='enrolled'><MdPayment/>Enrolled Classes</ActiveLink></li>
+                                        <li className="bg-slate-50 shadow-md rounded-lg mt-3 effect"><ActiveLink to='payhistory'><MdPayment/>Payment History</ActiveLink></li>
                             </>
                         }
-                        <div className="divider"></div>
-                        <li><ActiveLink to='/'><FaHome />Home</ActiveLink></li>
-                        <li><ActiveLink to='/classes'><BiBookReader />Classes</ActiveLink></li>
-                        <li><ActiveLink to='/classes'><FaSignOutAlt />LogOut</ActiveLink></li>
+                        <div className="divider mt-6"></div>
+                        <li className="bg-slate-50 shadow-md rounded-lg mt-4 effect"><ActiveLink to='/'><FaHome/>Home</ActiveLink></li>
+                        <li className="bg-slate-50 shadow-md rounded-lg mt-3 effect"><ActiveLink to='/classes'><BiBookReader />Classes</ActiveLink></li>
+                        <li className="bg-slate-50 shadow-md rounded-lg mt-3 effect"><ActiveLink to='/classes'><FaSignOutAlt />LogOut</ActiveLink></li>
                     </ul>
 
                 </div>

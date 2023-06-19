@@ -1,0 +1,4 @@
+.effect:hover{
+    background-image: linear-gradient(to right ,rgb(151, 18, 151),rgb(247, 100, 124));
+    color: aliceblue;
+}

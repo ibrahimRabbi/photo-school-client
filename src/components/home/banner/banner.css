@@ -1,0 +1,7 @@
+.title{
+    background:linear-gradient(to right ,rgb(241, 39, 73),rgb(117, 2, 117));
+    text-transform: uppercase;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+}

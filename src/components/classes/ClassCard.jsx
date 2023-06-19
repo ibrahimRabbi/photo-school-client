@@ -69,7 +69,7 @@ const ClassCard = ({ obj }) => {
 
     }
     return (
-        <div className={`grid gap-8 lg:gap-1 layout border p-5 rounded-lg ${availableSeats == 0 ? 'bg-red-400' : 'bg-base-200'}`}>
+        <div className={`grid gap-8 lg:gap-1 layout border p-5 rounded-lg shadow-md ${availableSeats == 0 ? 'bg-gray-500' : 'bg-base-200'}`}>
             <div className="avatar">
                 <div className="w-32 rounded-xl">
                     <img src={classImage} />
@@ -83,7 +83,7 @@ const ClassCard = ({ obj }) => {
                 </div>
                 <div className='flex justify-between items-center mt-5'>
                     <p> Course Fee -<span className='text-yellow-400 font-semibold text-xl'>${classPrice}</span></p>
-                    <button onClick={() => selectHandler(obj)} disabled={availableSeats == 0 || userData.role == 'admin' || userData.role == 'instructor' ? true : false} className="btn bg-emerald-500">Select</button>
+                    <button onClick={() => selectHandler(obj)} disabled={availableSeats == 0 || userData.role == 'admin' || userData.role == 'instructor' ? true : false} className="btn bg-gradient-to-r from-purple-700 to-pink-700 text-slate-50">Select</button>
                 </div>
             </div>
         </div>

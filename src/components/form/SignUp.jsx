@@ -62,18 +62,18 @@ const SignUp = () => {
 
 
     return (
-        <section className="my-11 border rounded-lg mx-auto  px-20 py-11 w-1/2">
+        <section className="py-11 mx-auto w-1/2">
             <div className="text-center">
-                <h1 className="font-semibold text-2xl text-emerald-500">SignUp</h1>
-                <hr className="mt-4 border-emerald-400" />
+                <h1 className="font-semibold text-4xl title">SignUp</h1>
+                <hr className="mt-4 border-purple-700" />
             </div>
-            <form className="flex flex-col gap-4 mt-8" onSubmit={handleSubmit(submit)}>
+            <form className=" mt-8" onSubmit={handleSubmit(submit)}>
 
                 <div className="form-control w-full">
                     <label className="label">
                         <span className="label-text">What is your name?</span>
                     </label>
-                    <input className="border border-emerald-400 p-2" placeholder="Name" {...register('name', { required: true })} />
+                    <input className="border border-pink-600 rounded-2xl p-2" placeholder="Name" {...register('name', { required: true })} />
                     {errors.name && <p className="text-red-500">Last name is required.</p>}
                 </div>
 
@@ -81,7 +81,7 @@ const SignUp = () => {
                     <label className="label">
                         <span className="label-text"> your Email</span>
                     </label>
-                    <input className="border border-emerald-400 p-2" placeholder="email" {...register('email', { required: true })} />
+                    <input className="border border-pink-600 rounded-2xl p-2" placeholder="email" {...register('email', { required: true })} />
                     {errors.email && <p className="text-red-500">email ius requird</p>}
                 </div>
 
@@ -89,7 +89,7 @@ const SignUp = () => {
                     <label className="label">
                         <span className="label-text">Password</span>
                     </label>
-                    <input type='password' className="border border-emerald-400 p-2" placeholder="password" {...register('password', {
+                    <input type='password' className="border border-pink-600 rounded-2xl p-2" placeholder="password" {...register('password', {
                         required: true,
                         minLength: 6,
                         pattern: /(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z])/
@@ -103,7 +103,7 @@ const SignUp = () => {
                     <label className="label">
                         <span className="label-text">Confirm Password</span>
                     </label>
-                    <input type='password' className="border border-emerald-400 p-2" placeholder="confirm-password" {...register('confirm', { required: true })} />
+                    <input type='password' className="border border-pink-600 rounded-2xl p-2" placeholder="confirm-password" {...register('confirm', { required: true })} />
                     {errors.confirm && <p className="text-red-500">confirm password is required</p>}
                 </div>
 
@@ -111,15 +111,15 @@ const SignUp = () => {
                     <label className="label">
                         <span className="label-text">your photo</span>
                     </label>
-                    <input className="border border-emerald-400 p-2" placeholder="photo URL" {...register('image', { required: true })} />
+                    <input className="border border-pink-600 rounded-2xl p-2" placeholder="photo URL" {...register('image', { required: true })} />
                     {errors.confirm && <p className="text-red-500">photo is required</p>}
                 </div>
                 <p className='text-red-600 font-semibold mb-2'>{error}</p>
-                <input className="btn bg-emerald-400" type="submit" />
+                <input className="btn w-full mt-11 bg-gradient-to-r from-purple-700 to-pink-600 text-slate-50" type="submit" />
             </form>
-            <p className="font-semibold mt-6 text-center">already have an account ? <Link to='/signin' className="text-emerald-500 font-semibold">Sign In</Link></p>
+            <p className="font-semibold mt-6 text-center">already have an account ? <Link to='/signin' className="text-purple-700 font-semibold">Sign In</Link></p>
             <div className="divider">OR</div>
-            <div className="ml-36">
+            <div className="flex justify-center">
                 <SigninProvider redirect='/' />
             </div>
         </section>

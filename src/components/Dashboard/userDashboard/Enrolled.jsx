@@ -1,26 +1,19 @@
-import { useEffect, useContext, useState } from "react";
+ 
 import { FaTrash } from "react-icons/fa";
-import { Context } from "../../Authentication/AuthProvider";
+import usePayHistory from "../../Hooks/usePayHistory";
+ 
 
 const Enrolled = () => {
 
-    const [data, setData] = useState([])
-    const { user } = useContext(Context)
+    const summryData = usePayHistory()
 
-    useEffect(() => {
-        fetch(` http://localhost:5000/class?email=${user?.email}`)
-            .then(res => res.json())
-            .then(res => setData(res))
-    }, [user])
-
-    console.log(data)
-
+ 
     return (
 
         <div className="overflow-x-auto w-full my-11 ml-6 p-11">
             <table className="table w-full">
-                <thead className='bg-emerald-400 text-lg'>
-                    <tr>
+                <thead className='bg-purple-700 text-slate-50'>
+                    <tr >
                         <th>number</th>
                         <th>image</th>
                         <th>name</th>
@@ -29,17 +22,17 @@ const Enrolled = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {data.map((value, index) => {
+                    {summryData.map((value, index) => {
                         return (
                             <tr key={value._id}>
                                 <th>{index + 1}</th>
                                 <td>
                                     <div className="mask mask-squircle w-12 h-12">
-                                        <img src={value.classImage} alt="" />
+                                        <img src={value.image} alt="" />
                                     </div>
                                 </td>
                                 <td>{value.className}</td>
-                                <th>${value.classPrice}</th>
+                                <th>${value.amount}</th>
                                 <th>
                                     <button className='text-red-600 text-2xl'><FaTrash /></button>
                                 </th>

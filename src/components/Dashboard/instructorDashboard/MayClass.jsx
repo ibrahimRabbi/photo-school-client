@@ -53,15 +53,15 @@ const MayClass = () => {
 
             <table className="table w-full">
 
-                <thead className='bg-emerald-400 text-[16px]'>
-                    <tr>
-                        <th>number</th>
+                <thead className='bg-pink-600 text-slate-200'>
+                    <tr className=''>
+                        <th className='p-5'>number</th>
                         <th>class Name</th>
                         <th>status</th>
                         <th> total Enrolled</th>
                         <th>Available Seats</th>
                         <th>FeedBack</th>
-                        <th>Action</th>
+                        <th><span className='ml-16'>Action</span></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -77,7 +77,7 @@ const MayClass = () => {
                                 <th><BiMessageDetail className='text-2xl ml-6' /></th>
                                 <th className='flex gap-3'>
                                     <button onClick={() => deleteHandler(value._id)} className='bg-red-600 p-2 rounded-lg text-slate-50 flex gap-2 items-center'><FaTrash /> Delete</button>
-                                    <Link to={`/dashboard/updateClass/${value._id}`} className='bg-yellow-400 p-2 rounded-lg text-slate-50 flex gap-2 items-center '><FaEdit /> update</Link>
+                                    <Link to={`/dashboard/updateClass/${value._id}`} className='bg-purple-700 p-2 rounded-lg text-slate-50 flex gap-2 items-center '><FaEdit /> update</Link>
                                 </th>
                             </tr>
                         )

@@ -12,7 +12,7 @@ const PayHistory = () => {
              
             <table className="table w-full">
 
-                <thead className='bg-emerald-400 text-[16px]'>
+                <thead className='bg-purple-700 text-slate-50'>
                     <tr>
                         <th>Email</th>
                         <th>class Name</th>
@@ -25,12 +25,12 @@ const PayHistory = () => {
                     {summeryData.map((value) => {
                         return (
                             <tr key={value._id}>
-                                <th>{value.email}</th>
+                                <td>{value.email}</td>
                                 <td>{value.className}</td>
                                 <td>{value.date}</td>
                                 <th>${value.amount}</th>
                                 <th>
-                                  <Link className="font-serif btn bg-yellow-400 font-semibold">See details</Link>
+                                  <Link className="text-slate-50 p-2 rounded-md bg-pink-600">See details</Link>
                                 </th>
                             </tr>
                         )

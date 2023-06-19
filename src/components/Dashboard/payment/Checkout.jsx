@@ -71,7 +71,8 @@ const CheckoutForm = ({ price, id }) => {
                 date: new Date(),
                 className: dataObj.className,
                 selecetClassId: dataObj._id,
-                classId: dataObj.classId
+                classId: dataObj.classId,
+                image : dataObj.classImage
             }
             fetch(" http://localhost:5000/summery", {
                 method: "POST",
@@ -115,7 +116,7 @@ const CheckoutForm = ({ price, id }) => {
 
 
     return (
-        <section className='w-[90%] border'>
+        <section className=''>
             <form className='ml-28' onSubmit={handleSubmit}>
                 <CardElement
                     options={{
@@ -133,7 +134,7 @@ const CheckoutForm = ({ price, id }) => {
                         },
                     }}
                 />
-                <button className='btn btn-sm w-[140px] bg-emerald-400' type="submit" disabled={!stripe || proccesing || !clientSecret}>
+                <button className='btn btn-sm w-[140px] text-slate-50 bg-gradient-to-r from-purple-700 to bg-pink-600' type="submit" disabled={!stripe || proccesing || !clientSecret}>
                     Pay
                 </button>
                 <p className='text-red-500 mt-4'>{errorMessage}</p>

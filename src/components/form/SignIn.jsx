@@ -50,18 +50,18 @@ const SignIn = () => {
 
 
     return (
-        <section className='w-1/2 border-2 rounded-md mt-11 mx-auto p-10 space-y-4'>
-            <div>
-                <h1 className="text-emerald-400 text-2xl font-semibold text-center">Sign In</h1>
-                <hr className="mt-4 border-1" />
+        <section className='pt-11 w-1/2 mx-auto border'>
+            <div className="w-1/2 mx-auto">
+                <h1 className="title text-4xl font-semibold text-center">Sign In</h1>
+                <hr className="mt-4 border-1 border-purple-800" />
             </div>
-            <form className="mt-11" onSubmit={handleSubmit(loginHandler)}>
+            <form className="p-6" onSubmit={handleSubmit(loginHandler)}>
                
                 <div className="form-control w-full">
                     <label className="label">
                         <span className="label-text">email</span>
                     </label>
-                    <input className="border border-emerald-400 p-2" placeholder="email" {...register('email', { required: true })} />
+                    <input className="border border-pink-600 rounded-2xl p-2" placeholder="email" {...register('email', { required: true })} />
                     {errors.email && <p className="text-red-500">email ius requird</p>}
                 </div>
 
@@ -69,7 +69,7 @@ const SignIn = () => {
                     <label className="label">
                         <span className="label-text">password</span>
                     </label>
-                    <input className="border border-emerald-400 p-2" placeholder="password" {...register('password', { required: true })} />
+                    <input className="border border-pink-600 rounded-2xl p-2" placeholder="password" {...register('password', { required: true })} />
                     {errors.password && <p className="text-red-500">password is requird</p>}
                 </div>
 
@@ -77,17 +77,17 @@ const SignIn = () => {
                     <label className="label">
                         <span className="label-text">confirm-password</span>
                     </label>
-                    <input className="border border-emerald-400 p-2" placeholder="confirm-password" {...register('confirm', { required: true })} />
+                    <input className="border border-pink-600 rounded-2xl p-2" placeholder="confirm-password" {...register('confirm', { required: true })} />
                     {errors.confirm && <p className="text-red-500">confirm password is required</p>}
                 </div>
                 <p className='text-red-600 font-semibold'>{error}</p>
-                <input value='sign In' type="submit" className='bg-emerald-400 btn w-full mt-16'/>
+                <input value='sign In' type="submit" className='bg-gradient-to-r from-purple-700 to-pink-600 text-slate-50 btn w-full mt-16'/>
             </form>
-            <p className="font-semibold text-center">dont have an account ? <Link to='/signup' className="text-emerald-500 font-semibold">Register</Link></p>
-            <div className="divider">OR</div>
-            <div className="ml-44">
-                <SigninProvider redirect={redirectTo} />
-            </div>
+            <p className="font-semibold text-center">dont have an account ? <Link to='/signup' className="text-purple-700 font-semibold">Register</Link></p>
+            <div className="divider">OR</div> 
+            <div className="flex justify-center items-center">
+                <SigninProvider redirect={redirectTo} />  
+            </div>        
         </section>
     );
  };
