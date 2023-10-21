@@ -1,36 +1,70 @@
-import AwesomeSlider from 'react-awesome-slider';
-import 'react-awesome-slider/dist/styles.css';
-import './banner.css'
+import React from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/effect-fade";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
+
 const Banner = () => {
     return (
-        <div>
-            
+        <header className='bg-slate-100'>
+            <Swiper
+                spaceBetween={30}
+                effect={"fade"}
+                autoplay={{ delay: 3000, disableOnInteraction: false }}
+                navigation={true}
+                pagination={{ clickable: true }}
+                modules={[Autoplay, Navigation, Pagination]}
+                className="mySwiper"
+            >
+                <SwiperSlide>
+                    <div className='w-[90%] pt-6 mx-auto flex justify-evenly   items-center'>
+                        <div className='w-1/2'  >
+                            <h1 className='text-4xl font-semibold text-purple-900'>convenient easy way of learning and gaining new skill</h1>
+                            <p className='text-sm mt-2'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt impedit quidem eaque velit inventore nisi ea quibusdam, fugiat id distinctio. Voluptatem blanditiis cumque quasi eius dolor cum, libero impedit</p>
+                            <div className='space-x-5 mt-4'>
+                                <button className='bg-purple-700 py-2 px-11 font-semibold text-lg text-white rounded-md'>Enroll today</button>
+                                <button className='bg-purple-700 py-2 px-11 font-semibold text-lg text-white rounded-md'>Join For free</button>
+                            </div>
+                        </div>
+                        <img className='1/2' loading='lazy' src="https://i.ibb.co/72XCF6W/Smiling-Business-Man-Standing-PNG-Clipart.png" />
+                    </div>
+                </SwiperSlide>
 
-            <AwesomeSlider>
-                <div className="bg-[url('https://i.ibb.co/qkCkRDW/nordwood-themes-F3-Dde-9thd8-unsplash.jpg')] bg-cover w-full h-full">
-                    <div className=' w-[90%] lg:w-[40%] lg:mt-64 mx-auto mt-16 lg:ml-28'>
-                        <h1 className='lg:text-4xl text-4xl title'>learn something new with us</h1>
-                        <p className='mt-2 text-blue-950 font-semibold'>Photography is a powerful medium that allows us to freeze moments in time and capture the beauty of the world around us.</p>
-                        <button className='btn text-slate-100 bg-gradient-to-r from-purple-600 to-pink-700 mt-3'>View Classes</button>
-                     </div>
-                </div>
-                <div className="bg-[url('https://i.ibb.co/mzMmZGM/theregisti-HSXIp58y-Py-I-unsplash.jpg')] bg-cover w-full h-full">
-                    <div className='lg:w-[50%] w-[90%] text-center mt-12 lg:mt-44 mx-auto'>
-                        <h1 className='lg:text-4xl text-4xl title'>prove on your selfe that you are geniuse</h1>
-                        <p className='mt-2 text-slate-50'>Photography is a powerful medium that allows us to freeze moments in time and capture the beauty of the world around us.</p>
-                        <button className='btn text-slate-50 border-0 bg-gradient-to-r from-purple-600 to-pink-700 mt-3'>view Features</button>
+                <SwiperSlide>
+                    <div className='w-[90%]  mx-auto flex justify-evenly  items-center'>
+                        <div className='w-1/2'>
+                            <h1 className='text-4xl text-purple-900 text-start font-semibold'>Thousend of skills and degree we provide. also our have been a expert teacher</h1>
+                            <p className='text-sm mt-2'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt impedit quidem eaque velit inventore nisi ea quibusdam, fugiat id distinctio. Voluptatem blanditiis cumque quasi eius dolor cum, libero impedit</p>
+                            <div className='space-x-5 mt-4'>
+                                <button className='bg-purple-700 py-2 px-11 font-semibold text-lg text-white rounded-md'>Enroll today</button>
+                                <button className='bg-purple-700 py-2 px-11 font-semibold text-lg text-white rounded-md'>Join For free</button>
+                            </div>
+                        </div>
+                        <img   width={350} loading='lazy' src="https://i.ibb.co/ctw1cWj/portrait-happy-woman-with-digital-tablet-1-removebg-preview.png" alt="" />
                     </div>
-                </div>
-                <div className="bg-[url('https://i.ibb.co/dr05kC1/robert-shunev-m-S1nl-Ybq1k-A-unsplash.jpg')] bg-cover w-full h-full">
-                    <div className='lg:w-[40%] w-[90%]  mt-44 mx-auto text-center'>
-                        <h1 className='lg:text-4xl text-4xl title'>learn with us hobby</h1>
-                        <p className='mt-2 text-slate-50'>to freeze moments in time and capture the beauty of the world around us.</p>
-                        <button className='btn text-slate-50 border-0 bg-gradient-to-r from-purple-600 to-pink-700 mt-3'>Enroll Now</button>
+                </SwiperSlide>
+
+                <SwiperSlide>
+                    <div className='w-[90%] mx-auto pt-11 flex justify-evenly items-center'>
+                        <div className='w-1/2'>
+                            <h1 className='text-4xl text-purple-900 text-start font-semibold tracking-normal leading-normal'>why getting late! lets start your new journey and career</h1>
+                            <p className='text-sm'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt impedit quidem eaque velit inventore nisi ea quibusdam, fugiat id distinctio. Voluptatem blanditiis cumque quasi eius dolor cum, libero impedit  </p>
+                            <div className='space-x-5 mt-4'>
+                                <button className='bg-purple-700 py-2 px-11 font-semibold text-lg text-white rounded-md'>Enroll today</button>
+                                <button className='bg-purple-700 py-2 px-11 font-semibold text-lg text-white rounded-md'>Join For free</button>
+                            </div>
+                        </div>
+                        <img   width={460} loading='lazy' src="https://i.ibb.co/25TJLnd/handsome-businessman-suit-glasses-cross-arms-chest-look-removebg-preview-1.png" />
                     </div>
-                </div>
-                
-            </AwesomeSlider>
-       </div>
+                </SwiperSlide>
+
+
+            </Swiper>
+
+        </header>
     );
 };
 

@@ -53,7 +53,7 @@ const MayClass = () => {
 
             <table className="table w-full">
 
-                <thead className='bg-pink-600 text-slate-200'>
+                <thead className='bg-purple-700 text-slate-200'>
                     <tr className=''>
                         <th className='p-5'>number</th>
                         <th>class Name</th>

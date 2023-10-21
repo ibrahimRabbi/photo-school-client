@@ -5,26 +5,16 @@ import { useLocation, useParams } from 'react-router-dom';
 import TitleBar from '../../utility/TitleBar';
  
 const Payment = () => {
-const stripePromise = loadStripe(import.meta.env.VITE_PUBLISHABLE_KEY);
-
-    const location = useLocation()
-    const price = location.state?.total
+    const stripePromise = loadStripe("pk_test_51NFaHHHYxG7WJPCTk0y79QmctbWnn8Q2zwqMbAsbPFLk8dCWhGi4I1K8009zXtNnfn9lFdcC9vzudTOvo1s7JV3W00xwgxC3Ju");
     const param = useParams()
     
-   
-
-  
-
-
-
-
     return (
-        <section className='w-[70%] border border-purple-600 p-6 rounded-xl bg-slate-200 shadow-xl'>
-            <div className='my-11'>
+        <section className='mt-20'>
+            <div className='mb-10' >
                 <TitleBar title='Payment' />
           </div>
             <Elements stripe={stripePromise}>
-                <CheckoutForm price={price} id={param.id} />
+                <CheckoutForm id={param.id} />
             </Elements>
         </section>
     );

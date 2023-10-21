@@ -8,7 +8,7 @@ const usePayHistory = () => {
 
 
     useEffect(() => {
-        fetch(` http://localhost:5000/summery?email=${user?.email}`)
+        fetch(`http://localhost:5000/summery?email=${user?.email}`)
             .then(res => res.json())
             .then(res => setdata(res))
     }, [user])

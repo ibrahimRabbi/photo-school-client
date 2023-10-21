@@ -71,7 +71,7 @@ const ManageClass = () => {
                                     <button
                                         onClick={() => approvedHandler(value._id, 'approved')}
                                         disabled={value?.status == 'approved' || value?.status == 'deny' ? true : false}
-                                        className=" rounded-lg bg-pink-600 text-slate-50 btn">
+                                        className="rounded-lg bg-pink-600 hover:bg-pink-700 text-slate-50 btn">
                                         Approved
                                     </button>
                                     <button

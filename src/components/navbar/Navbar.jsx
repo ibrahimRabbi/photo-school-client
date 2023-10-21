@@ -1,13 +1,14 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Context } from '../Authentication/AuthProvider';
 import ActiveLink from '../utility/ActiveLink';
 import Swal from 'sweetalert2'
+import {BsSearch} from 'react-icons/bs'
+import Loading from '../utility/Loading';
 const Navbar = () => {
-
-
     const { user, logOut } = useContext(Context)
-
+    const [users,setUsers] = useState([])
+ 
     const logout = () => {
         Swal.fire({
             title: 'Are you sure?',
@@ -28,76 +29,51 @@ const Navbar = () => {
         })
     }
 
+    useEffect(() => {
+        fetch(`http://localhost:5000/user?email=${user?.email}`)
+            .then(res => res.json())
+        .then(res=>setUsers(res))
+    },[user])
 
+    // if (!users[0]?.role) {
+    //     return <div className='my-80'>
+    //         <Loading/>
+    //     </div>
+    // }
+     
     return (
-        <nav className="bg-gradient-to-r from-purple-600 to-pink-600 absolute z-10 w-full">
-            <div className="navbar w-[94%] mx-auto">
+        <nav className="w-full bg-slate-100">
+            <div className="navbar flex justify-between items-center  w-[94%] mx-auto">
 
-                {/* navbar when screen in small then visible this div*/}
-                <div className="navbar-start">
-                    <div className="dropdown">
-                        <label tabIndex={0} className="btn btn-ghost lg:hidden">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
-                        </label>
-                        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 z-10">
-                            <li> <Link className='flex items-center'>
-                                <img width={50} src="https://i.ibb.co/sbLXc68/Pngtree-camera-icon-4419861.png"></img>
-                                <p className='flex flex-col font-semibold text-sm'>
-                                    <span>PhotoGraphy</span>
-                                    <span> School</span>
-                                </p>
-                            </Link></li>
-                            <li><ActiveLink to='/'>Home</ActiveLink></li>
-                            <li><ActiveLink to='/instructors'>Instructors</ActiveLink></li>
-                            <li><ActiveLink to='/classes'>classes</ActiveLink></li>
-                            {user ? <>
-                                <li><ActiveLink to='/dashboard'>Dashboard</ActiveLink></li>
-                            </>
-                                : ''}
-                        </ul>
-                    </div>
+                <Link className='lg:flex hidden items-center'>
+                    <p className='text-3xl font-semibold'><span className=' text-purple-800'>Edu</span><span>Care</span></p>
+                </Link>
 
-                    <Link className='lg:flex hidden items-center'>
-                        <img width={70} src="https://i.ibb.co/sbLXc68/Pngtree-camera-icon-4419861.png"></img>
-                        <p className='flex flex-col font-semibold text-xl'>
-                            <span>PhotoGraphy</span>
-                            <span> School</span>
-                        </p>
-                    </Link>
-                </div>
+                
+                    <form className='relative w-[40%]'>
+                        <input className='p-3 rounded-3xl w-full border border-purple-700 ' type="text" name="" id="" placeholder='what would you like to Learn?' />
+                        <button className='absolute right-0 bg-purple-700 text-slate-50 text-md py-4 font-bold px-4 rounded-r-full rounded-l-xl' type="submit"><BsSearch /></button>
+                </form> 
+                
 
-
-                {/* navbar when screen in large then visible this div*/}
-                <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal px-1 font-semibold text-[1rem]">
-                        <li><ActiveLink to='/'>Home</ActiveLink></li>
-                        <li><ActiveLink to='/instructors'>Instructors</ActiveLink></li>
-                        <li><ActiveLink to='/classes'>classes</ActiveLink></li>
-                        {user ? <>
-                            <li><ActiveLink to='/dashboard'>Dashboard</ActiveLink></li>
-                        </>
-                            : ''}
-                    </ul>
-                </div>
-
-
-                {/* navbar end section*/}
-                <div className="navbar-end gap-2">
-                    {
-                        user ? <div className='flex items-center gap-2'>
-                            <div className="tooltip tooltip-bottom z-20" data-tip={user.displayName}>
-                                <label className="btn btn-ghost btn-circle avatar " >
-                                    <div className="w-10 rounded-full">
-                                        <img src={user.photoURL} />
-                                    </div>
-                                </label>
+                    
+                    <div className='space-x-5 font-semibold'>
+                    <ActiveLink to='courses'>All Courses</ActiveLink>
+                    {user ? <div className='flex justify-center items-center gap-5'>
+                        {
+                            (users[0]?.role === 'admin') ? <Link to='/dashboard/manageClass'>Dashboard</Link>
+                                : (users[0]?.role === 'instructor') ? <Link to='/dashboard/myclass'>Dashboard</Link> : <Link to='/dashboard/mycourse'>Dashboard</Link>
+                        }
+                        <div className="avatar">
+                            <div className="w-12 rounded-full">
+                                <img src={user.photoURL} />
                             </div>
-
-                            <button onClick={logout} className='btn text-sm'>Sign Out</button>
-                        </div> : <Link to='/signin' className='btn'>Sign In</Link>
-                    }
-                </div>
-
+                        </div>
+                        <button className='border border-purple-700 p-2 rounded-md hover:bg-purple-600 hover:text-white font-semibold duration-150 text-zinc-600' onClick={logout}>Sign Out</button>
+                    </div> : <Link to='/signin' className='border border-purple-700 p-2 rounded-md hover:bg-purple-600 hover:text-white font-semibold duration-150 text-zinc-600'>Sign In</Link>}
+                   
+                    
+                    </div>
             </div>
 
         </nav>

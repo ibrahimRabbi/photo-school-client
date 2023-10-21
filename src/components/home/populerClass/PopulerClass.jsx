@@ -1,25 +1,40 @@
  import ClassCard from "../../classes/ClassCard";
 import useClassessHook from "../../Hooks/ClassessHook";
  import TitleBar from "../../utility/TitleBar";
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
+import Holder from "./Holder";
 
  
 
 const PopulerClass = () => {
    
-    const {classData} = useClassessHook()
+    const data = ['machine learning', '3d design', 'motion grapich', 'visual effect', 'grapich design', 'photoGraphy', 'videoGraphy']
+     
 
-    const maxEnrolledClass = classData.filter(v => v.totalEnrolled > 1700)
-    
+
      
  
     return (
         <section className="mt-28 w-[90%] mx-auto">
-            <TitleBar title='popular Classess'/>
-            <div className="grid lg:grid-cols-2 gap-10 mt-11">
-                {
-                    maxEnrolledClass.map(v => <ClassCard obj={v} key={v._id} />)
-                }
-            </div>
+            <TitleBar title='popular Classess' />
+            <div className="mt-16 font-semibold">
+                <Tabs>
+                    <TabList>
+                        {data.map(v => <Tab key={Math.random()}>{v}</Tab>)}
+                    </TabList>
+
+                    {data.map(v => {
+                        return (
+                            <TabPanel key={Math.random()}>
+                                <h1 className="text-2xl font-semibold mt-10">Recommanded for you the professional certificate course</h1>
+                                <Holder categroy={v} />
+                            </TabPanel>
+                        )
+                    })}
+                     
+                </Tabs>  
+       </div>
         </section>
     );
 };

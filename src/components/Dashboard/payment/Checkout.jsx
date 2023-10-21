@@ -4,20 +4,27 @@ import Swal from 'sweetalert2';
 import { Context } from '../../Authentication/AuthProvider';
 import useSelectedData from '../../Hooks/useSelecet';
 import './payment.css'
+import { useLocation, useNavigate } from 'react-router-dom';
 
 
 
 
-const CheckoutForm = ({ price, id }) => {
+
+const CheckoutForm = ({ id }) => {
+
     const stripe = useStripe();
     const elements = useElements();
     const [errorMessage, setError] = useState('')
     const [proccesing, setProcessing] = useState(false)
     const [clientSecret, setClientSecret] = useState("");
     const { user } = useContext(Context)
-    const { selectedData } = useSelectedData()
+    //const { selectedData } = useSelectedData()
 
-    const dataObj = selectedData.find(v => v._id == id)
+
+    const { state } = useLocation()
+    const { className, classImage, classPrice, _id } = state.obj
+const navigate = useNavigate()
+    //  const dataObj = selectedData.find(v => v._id == id)
 
 
     const handleSubmit = async (event) => {
@@ -66,23 +73,19 @@ const CheckoutForm = ({ price, id }) => {
         if (paymentIntent.status == 'succeeded') {
             const summery = {
                 transictionId: paymentIntent.id,
-                amount: price,
+                courseId: _id,
                 email: user?.email,
                 date: new Date(),
-                className: dataObj.className,
-                selecetClassId: dataObj._id,
-                classId: dataObj.classId,
-                image : dataObj.classImage
+                classImage, className, classPrice
             }
-            fetch(" http://localhost:5000/summery", {
+            fetch("http://localhost:5000/summery", {
                 method: "POST",
                 headers: { 'content-type': 'application/json' },
                 body: JSON.stringify(summery)
             })
                 .then(res => res.json())
                 .then(res => {
-
-                    if (res.result.insertedId && res.deleted.deletedCount) {
+                    if (res.insertedId) {
                         Swal.fire({
                             position: 'top-end',
                             icon: 'success',
@@ -90,7 +93,7 @@ const CheckoutForm = ({ price, id }) => {
                             showConfirmButton: false,
                             timer: 1500
                         })
-
+                        navigate('/mycourse')
 
                     }
                 })
@@ -102,22 +105,23 @@ const CheckoutForm = ({ price, id }) => {
 
 
     useEffect(() => {
-        if (price > 0) {
+        if (classPrice > 0) {
             fetch(" http://localhost:5000/create-payment-intent", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ price }),
+                body: JSON.stringify({ price: classPrice }),
             })
                 .then((res) => res.json())
                 .then((data) => setClientSecret(data.clientSecret));
         }
-    }, [price]);
+    }, [classPrice]);
 
 
 
     return (
-        <section className=''>
-            <form className='ml-28' onSubmit={handleSubmit}>
+        <section className=' w-1/2 mx-auto'>
+            <form className='' onSubmit={handleSubmit}>
+                <p>Payable Amount: {classPrice}</p>
                 <CardElement
                     options={{
                         style: {
@@ -134,7 +138,7 @@ const CheckoutForm = ({ price, id }) => {
                         },
                     }}
                 />
-                <button className='btn btn-sm w-[140px] text-slate-50 bg-gradient-to-r from-purple-700 to bg-pink-600' type="submit" disabled={!stripe || proccesing || !clientSecret}>
+                <button className='btn btn-sm w-[140px] mt-4 text-slate-50 bg-purple-700' type="submit" disabled={!stripe || proccesing || !clientSecret}>
                     Pay
                 </button>
                 <p className='text-red-500 mt-4'>{errorMessage}</p>

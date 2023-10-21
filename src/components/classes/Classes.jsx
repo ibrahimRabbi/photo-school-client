@@ -1,22 +1,29 @@
 import useClassessHook from "../Hooks/ClassessHook";
+import Card from "../utility/Card";
+import Loading from "../utility/Loading";
 import TitleBar from "../utility/TitleBar";
-import ClassCard from "./ClassCard";
+ 
 
  
 
 const Classes = () => {
     const { classData } = useClassessHook()
-    
+     
+    if (classData.length < 1) {
+        return <Loading/>
+    }
     return (
-        <section className="pt-12 w-[90%] mx-auto">
-            <div className="mt-24">
+        <section className="" >
+            
+            <div className="py-12 w-[90%] mx-auto">
                 <TitleBar title='All coures and Classes' />
-                <div className="grid grid-cols-2 gap-10 mt-11">
+                <div className="grid grid-cols-3 gap-10 mt-11">
                     {
-                        classData.map(v => <ClassCard obj={v} key={v._id} />)
+                        classData.map(v => <Card key={v._id} obj={v} />)
                     }
                 </div>
-           </div>
+               </div>
+           
         </section>
     );
 };

@@ -57,13 +57,13 @@ const ManageUser = () => {
                                     <button
                                         onClick={() => adminMakeHandler(value._id, value.name, 'admin')}
                                         disabled={value?.role == 'admin' ? true : false}
-                                        className="p-2 rounded-lg bg-purple-700 text-slate-50 btn">
+                                        className="text-xs btn bg-purple-800 text-slate-50">
                                         make admin
                                     </button>
                                     <button
                                         onClick={() => adminMakeHandler(value._id, value.name, 'instructor')}
                                         disabled={value?.role == 'instructor' ? true : false}
-                                        className="p-2 btn rounded-lg bg-pink-500 text-slate-50">
+                                        className=" text-xs bg-pink-600 btn text-slate-50">
                                         make Instructor
                                     </button>
                                 </td>

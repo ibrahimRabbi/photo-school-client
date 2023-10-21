@@ -7,46 +7,53 @@ import AddClass from "../Dashboard/instructorDashboard/AddClass";
 import MayClass from "../Dashboard/instructorDashboard/MayClass";
 import UpdateClass from "../Dashboard/instructorDashboard/UpdateClass";
 import Payment from "../Dashboard/payment/Payment";
-import Enrolled from "../Dashboard/userDashboard/Enrolled";
 import PayHistory from "../Dashboard/userDashboard/PayHistory";
- 
+
 import SelectClass from "../Dashboard/userDashboard/SelectClass";
 import SignIn from "../form/SignIn";
 import SignUp from "../form/SignUp";
- 
+
 import HomeComponents from "../home/HomeComponents";
 import Instructors from "../instructors/Instructors";
 import HomeLayout from "../layout/HomeLayout";
 import Error from "../utility/Error";
- 
+import Review from "../review/Review";
+import PrivetRoute from "../privetRoute/PrivetRoute";
+import MyCourse from "../Dashboard/userDashboard/MyCourse";
+
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <HomeLayout />,
-        errorElement : <Error/>,
+        errorElement: <Error />,
         children: [
             {
                 path: '/',
-                element : <HomeComponents/>
+                element: <HomeComponents />
             },
             {
                 path: 'instructors',
-                element : <Instructors/>
+                element: <Instructors />
             },
             {
-                path: 'classes',
-                element : <Classes/>
+                path: 'courses',
+                element: <Classes />
             },
-       ]
+            {
+                path: 'course/:id',
+                element: <Review />,
+                loader: ({ params }) => fetch(`http://localhost:5000/class/${params.id}`)
+            },
+        ]
     },
     {
         path: '/signup',
-        element : <SignUp/> 
+        element: <SignUp />
     },
     {
         path: '/signin',
-        element : <SignIn/> 
+        element: <SignIn />
     },
     {
         path: '/dashboard',
@@ -54,45 +61,49 @@ const router = createBrowserRouter([
         children: [
             {
                 path: 'selecetClass',
-                element : <SelectClass/>
+                element: <SelectClass />
+            },
+            {
+                path: 'mycourse',
+                element: <MyCourse />
             },
             {
                 path: 'payment/:id',
-                element : <Payment/>
+                element: <Payment />
             },
             {
                 path: 'payhistory',
-                element : <PayHistory/>
-            },
-            {
-                path: 'enrolled',
-                element : <Enrolled/>
+                element: <PayHistory />
             },
             /*instructor routes*/
             {
                 path: 'addclass',
-                element : <AddClass/>
+                element: <AddClass />
             },
             {
                 path: 'myclass',
-                element : <MayClass/>
+                element: <MayClass/>
             },
             {
                 path: 'updateClass/:id',
-                element : <UpdateClass/>
+                element: <UpdateClass />
             },
             /*** admin route */
             {
                 path: 'manageUser',
-                element : <ManageUser/>
+                element: <ManageUser />
             },
             {
                 path: 'manageClass',
-                element : <ManageClass/>
+                element: <ManageClass />
             },
         ]
+    },
+    {
+        path: '/payment',
+        element: <PrivetRoute><Payment /></PrivetRoute>
     }
-    
-     
+
+
 ])
 export default router;

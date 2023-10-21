@@ -5,7 +5,7 @@ const ActiveLink = ({ to, children }) => {
     return (
         <NavLink
             to={to}
-            className={({ isActive }) => isActive ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-slate-50' : ""}>
+            className={({ isActive }) => isActive ? ' bg-purple-800 p-2 rounded-lg text-white' : ""}>
             {children}
         </NavLink>
     );

@@ -14,7 +14,7 @@ const SigninProvider = ({ redirect }) => {
     const googleHandler = () => {
         signinGoogle()
             .then(res => {
-                fetch(' http://localhost:5000/user', {
+                fetch('http://localhost:5000/user', {
                     method: "POST",
                     headers: { 'content-type': 'application/json' },
                     body: JSON.stringify({ email: res.user.email, name: res.user.displayName })
@@ -29,7 +29,7 @@ const SigninProvider = ({ redirect }) => {
 
 
     return (
-        <button onClick={googleHandler} className="btn btn-outline border-pink-600 flex gap-1 items-center">
+        <button onClick={googleHandler} className="btn btn-outline border-purple-800 flex gap-1 items-center">
             <FaGoogle className='text-blue-400 text-xl' />
             Continue with Google
         </button>
