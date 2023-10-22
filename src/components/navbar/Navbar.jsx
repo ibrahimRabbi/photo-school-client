@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 import { Context } from '../Authentication/AuthProvider';
 import ActiveLink from '../utility/ActiveLink';
 import Swal from 'sweetalert2'
-import {BsSearch} from 'react-icons/bs'
+import { BsSearch } from 'react-icons/bs'
 import Loading from '../utility/Loading';
 const Navbar = () => {
     const { user, logOut } = useContext(Context)
-    const [users,setUsers] = useState([])
- 
+    const [users, setUsers] = useState([])
+
     const logout = () => {
         Swal.fire({
             title: 'Are you sure?',
@@ -32,15 +32,15 @@ const Navbar = () => {
     useEffect(() => {
         fetch(`http://localhost:5000/user?email=${user?.email}`)
             .then(res => res.json())
-        .then(res=>setUsers(res))
-    },[user])
+            .then(res => setUsers(res))
+    }, [user])
 
     // if (!users[0]?.role) {
     //     return <div className='my-80'>
     //         <Loading/>
     //     </div>
     // }
-     
+
     return (
         <nav className="w-full bg-slate-100">
             <div className="navbar flex justify-between items-center  w-[94%] mx-auto">
@@ -49,15 +49,15 @@ const Navbar = () => {
                     <p className='text-3xl font-semibold'><span className=' text-purple-800'>Edu</span><span>Care</span></p>
                 </Link>
 
-                
-                    <form className='relative w-[40%]'>
-                        <input className='p-3 rounded-3xl w-full border border-purple-700 ' type="text" name="" id="" placeholder='what would you like to Learn?' />
-                        <button className='absolute right-0 bg-purple-700 text-slate-50 text-md py-4 font-bold px-4 rounded-r-full rounded-l-xl' type="submit"><BsSearch /></button>
-                </form> 
-                
 
-                    
-                    <div className='space-x-5 font-semibold'>
+                <form className='relative w-[40%]'>
+                    <input className='p-3 rounded-3xl w-full border border-purple-700 ' type="text" name="" id="" placeholder='what would you like to Learn?' />
+                    <button className='absolute right-0 bg-purple-700 text-slate-50 text-md py-4 font-bold px-4 rounded-r-full rounded-l-xl' type="submit"><BsSearch /></button>
+                </form>
+
+
+
+                <div className='space-x-5 font-semibold'>
                     <ActiveLink to='courses'>All Courses</ActiveLink>
                     {user ? <div className='flex justify-center items-center gap-5'>
                         {
@@ -71,9 +71,9 @@ const Navbar = () => {
                         </div>
                         <button className='border border-purple-700 p-2 rounded-md hover:bg-purple-600 hover:text-white font-semibold duration-150 text-zinc-600' onClick={logout}>Sign Out</button>
                     </div> : <Link to='/signin' className='border border-purple-700 p-2 rounded-md hover:bg-purple-600 hover:text-white font-semibold duration-150 text-zinc-600'>Sign In</Link>}
-                   
-                    
-                    </div>
+
+
+                </div>
             </div>
 
         </nav>

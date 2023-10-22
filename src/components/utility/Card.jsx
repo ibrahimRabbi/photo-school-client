@@ -18,7 +18,7 @@ const Card = ({ obj }) => {
                 <div className='mt-2'>
                     <p>Course Features</p>
                     <ul className='list-disc ml-4'>
-                        {benefit.map((v) => <li key={Math.random()}>{v}</li>)}
+                        {benefit?.map((v) => <li key={Math.random()}>{v}</li>)}
                     </ul>
                 </div>
                 

@@ -12,7 +12,7 @@ import { useEffect } from "react";
 import './dasboard.css'
 import Loading from "../utility/Loading";
 import Swal from "sweetalert2";
- 
+
 
 
 
@@ -22,7 +22,7 @@ const Dashboard = () => {
     const { user, loading, logOut } = useContext(Context)
     const [userData, setUser] = useState([])
     const navigate = useNavigate()
-    
+
 
 
     const signoutHandler = () => {
@@ -47,7 +47,7 @@ const Dashboard = () => {
         })
 
     }
-    
+
     useEffect(() => {
         fetch(` http://localhost:5000/user?email=${user?.email}`)
             .then(res => res.json())
@@ -59,9 +59,9 @@ const Dashboard = () => {
         return <Loading />
     }
 
-     
 
-     
+
+
 
     return (
         <section className="">
@@ -74,7 +74,7 @@ const Dashboard = () => {
 
                 <div className="drawer-side">
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                   
+
 
                     <ul className="menu p-4 w-80 h-full bg-slate-100 text-zinc-950 text-base font-semibold">
                         <li className=" ">

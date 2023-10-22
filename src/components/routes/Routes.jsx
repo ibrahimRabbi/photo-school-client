@@ -45,6 +45,7 @@ const router = createBrowserRouter([
                 element: <Review />,
                 loader: ({ params }) => fetch(`http://localhost:5000/class/${params.id}`)
             },
+
         ]
     },
     {
@@ -82,7 +83,7 @@ const router = createBrowserRouter([
             },
             {
                 path: 'myclass',
-                element: <MayClass/>
+                element: <MayClass />
             },
             {
                 path: 'updateClass/:id',
@@ -101,7 +102,7 @@ const router = createBrowserRouter([
     },
     {
         path: '/payment',
-        element: <PrivetRoute><Payment /></PrivetRoute>
+        element: <PrivetRoute><Payment/></PrivetRoute>
     }
 
 

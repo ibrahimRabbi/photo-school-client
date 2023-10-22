@@ -23,10 +23,10 @@ const CheckoutForm = ({ id }) => {
 
     const { state } = useLocation()
     const { className, classImage, classPrice, _id } = state.obj
-const navigate = useNavigate()
+    const navigate = useNavigate()
     //  const dataObj = selectedData.find(v => v._id == id)
-
-
+console.log(state.obj)
+ 
     const handleSubmit = async (event) => {
         event.preventDefault();
         setProcessing(true)
@@ -93,7 +93,7 @@ const navigate = useNavigate()
                             showConfirmButton: false,
                             timer: 1500
                         })
-                        navigate('/mycourse')
+                        navigate('/dashboard/mycourse')
 
                     }
                 })

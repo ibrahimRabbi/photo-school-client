@@ -20,10 +20,10 @@ const UpdateClass = () => {
             .then(res => {
                 setdata(res)
                 setImage(res.image)
-            } )
+            })
     }, [url])
 
-   
+
 
 
     const handleSubmit = (e) => {
@@ -31,27 +31,27 @@ const UpdateClass = () => {
         const className = e.target.name.value
         const classPrice = e.target.price.value
         const availableSeats = e.target.seat.value
-setLoad(true)
- 
-       if(e.target.img?.files[0]){
-           const fromData = new FormData()
-           fromData.append('image', e.target.img.files[0])
+        setLoad(true)
 
-           fetch(`https://api.imgbb.com/1/upload?key=980c5aa9b32d7a954c2c27ea3bb7f131`, {
-               method: "POST",
-               body: fromData
-           })
-               .then(res => res.json())
-               .then(res => {
-                   setImage(res.data?.display_url)
-               })
+        if (e.target.img?.files[0]) {
+            const fromData = new FormData()
+            fromData.append('image', e.target.img.files[0])
 
-       }
+            fetch(`https://api.imgbb.com/1/upload?key=980c5aa9b32d7a954c2c27ea3bb7f131`, {
+                method: "POST",
+                body: fromData
+            })
+                .then(res => res.json())
+                .then(res => {
+                    setImage(res.data?.display_url)
+                })
+
+        }
 
         fetch((url), {
             method: "PATCH",
             headers: { 'content-type': 'application/json' },
-            body: JSON.stringify({ className, classPrice, availableSeats,image})
+            body: JSON.stringify({ className, classPrice, availableSeats, image })
         })
             .then(res => res.json())
             .then(res => {
@@ -70,7 +70,7 @@ setLoad(true)
     }
 
     if (load) {
-        return <Loading/>
+        return <Loading />
     }
 
     return (

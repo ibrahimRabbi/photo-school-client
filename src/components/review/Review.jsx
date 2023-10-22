@@ -1,24 +1,68 @@
-import React, { useState } from 'react';
-import { Link, useLoaderData, useParams } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { Link, useLoaderData, useNavigate, useParams } from 'react-router-dom';
 import { BsBookmarkFill, BsBookmark } from 'react-icons/bs'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import StarRating from '../utility/Rating';
+import Swal from 'sweetalert2';
+import { Context } from '../Authentication/AuthProvider';
 
 const Review = () => {
     const data = useLoaderData()
-    const { video, className, benefit, classPrice, rating, _id } = data
+    const { video, className, benefit, classPrice, classImage, rating, _id } = data
     const [save, setSave] = useState(false)
+    const { user } = useContext(Context)
+    const navigate = useNavigate()
 
     const saveHandler = () => {
-        setSave(!save)
+        if (user) {
+            setSave(true)
+            const savedData = {
+                classId: _id,
+                userEmail: user?.email,
+                classImage,
+                classPrice,
+                className
+            }
 
-        if (!save) {
-            toast('course has been saved')
+            fetch(' http://localhost:5000/select', {
+                method: "POST",
+                headers: { 'content-type': 'application/json' },
+                body: JSON.stringify(savedData)
+            })
+                .then(res => res.json())
+                .then(res => {
+                    if (res.insertedId) {
+                        toast('course has been saved')
+                    }
+                    if (res.message) {
+                        toast(res.message)
+                    }
+                })
         } else {
-            toast('course has been unsaved')
+            Swal.fire({
+                title: 'you are not login',
+                text: "sign in first then you can access class select option",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'sign In'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    navigate('/signin', { state: { from: location } })
+                }
+            })
         }
+
+
     }
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/select/${_id}`)
+            .then(res => res.json())
+        .then(res=>setSave(res))
+    },[])
 
     return (
         <section className='mt-11 w-[90%] mx-auto flex justify-start gap-16'>

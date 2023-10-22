@@ -1,5 +1,6 @@
 import { FaTrash } from 'react-icons/fa'
-import { BiCreditCard } from 'react-icons/bi'
+import { CiViewList } from 'react-icons/ci'
+import { RxCross2 } from 'react-icons/rx'
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import useSelectedData from '../../Hooks/useSelecet';
@@ -9,6 +10,7 @@ import useSelectedData from '../../Hooks/useSelecet';
 const SelectedClass = () => {
     const { selectedData, refetch } = useSelectedData()
 
+    
     const deleteHandler = (id) => {
         Swal.fire({
             title: 'Are you sure?',
@@ -56,8 +58,9 @@ const SelectedClass = () => {
                         <th>image</th>
                         <th>name</th>
                         <th>Price</th>
-                        <th><span className='ml-6'>Action</span></th>
-                       
+                        <th>unsaved</th>
+                        <th>View details</th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -72,11 +75,13 @@ const SelectedClass = () => {
                                 </td>
                                 <td>{value.className}</td>
                                 <th>${value.classPrice}</th>
-                                <td className='flex gap-4 items-center'>
-                                    <button onClick={() => deleteHandler(value._id)} className='text-red-600 text-2xl border p-2 rounded-lg'><FaTrash /></button>
-                               
-                                
-                                    <Link to={`/dashboard/payment/${value._id}`} className=' border p-2 rounded-lg' state={{ total: value.classPrice }}><BiCreditCard className='text-emerald-600 text-2xl' /></Link>
+                                <td>
+                                    <button onClick={() => deleteHandler(value._id)} className='text-red-600 text-2xl border p-2 rounded-lg'><RxCross2/></button>
+                                </td>
+                                <td>
+                                    <Link to={`/course/${value.classId}`} className='p-2'>
+                                        <CiViewList className='text-purple-800 text-3xl'/>
+                                    </Link>
                                 </td>
                             </tr>
                         )

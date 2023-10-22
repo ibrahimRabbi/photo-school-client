@@ -10,11 +10,11 @@ const AddClass = () => {
     const { user } = useContext(Context)
     const { register, handleSubmit, formState: { errors }, } = useForm()
     const navigate = useNavigate()
-const [load,setLoad] = useState(false)
+    const [load, setLoad] = useState(false)
 
     const submit = (data) => {
         const { className, price, seat, img } = data
-setLoad(true)
+        setLoad(true)
         const fromData = new FormData()
         fromData.append('image', img[0])
 
@@ -31,10 +31,10 @@ setLoad(true)
                         instructorName: user?.displayName,
                         instructorEmail: user?.email,
                         className,
-                        classPrice : price,
-                        availableSeats:seat,
+                        classPrice: price,
+                        availableSeats: seat,
                         totalEnrolled: 0,
-                        classImage:res.data.display_url,
+                        classImage: res.data.display_url,
                         status: 'pannding',
                     }
                     fetch(' http://localhost:5000/pannding', {
@@ -63,11 +63,11 @@ setLoad(true)
     }
 
     if (load) {
-        return <Loading/>
+        return <Loading />
     }
     return (
         <section className="w-[70%]  mt-11 rounded-lg shadow-lg mx-auto">
-            <TitleBar title='Add Course'/>
+            <TitleBar title='Add Course' />
             <form className=" px-16 py-6 flex flex-col gap-6" onSubmit={handleSubmit(submit)}>
                 <div className="flex gap-6">
                     <div className="form-control w-full">

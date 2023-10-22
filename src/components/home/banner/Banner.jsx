@@ -5,6 +5,7 @@ import "swiper/css";
 import "swiper/css/effect-fade";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import { Link } from 'react-router-dom';
 
 
 const Banner = () => {
@@ -25,8 +26,8 @@ const Banner = () => {
                             <h1 className='text-4xl font-semibold text-purple-900'>convenient easy way of learning and gaining new skill</h1>
                             <p className='text-sm mt-2'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt impedit quidem eaque velit inventore nisi ea quibusdam, fugiat id distinctio. Voluptatem blanditiis cumque quasi eius dolor cum, libero impedit</p>
                             <div className='space-x-5 mt-4'>
-                                <button className='bg-purple-700 py-2 px-11 font-semibold text-lg text-white rounded-md'>Enroll today</button>
-                                <button className='bg-purple-700 py-2 px-11 font-semibold text-lg text-white rounded-md'>Join For free</button>
+                                <Link to='/courses' className='bg-purple-700 py-2 px-11 font-semibold text-lg text-white rounded-md'>Enroll today</Link>
+                                <Link className='bg-purple-700 py-2 px-11 font-semibold text-lg text-white rounded-md'>Join For free</Link>
                             </div>
                         </div>
                         <img className='1/2' loading='lazy' src="https://i.ibb.co/72XCF6W/Smiling-Business-Man-Standing-PNG-Clipart.png" />
@@ -39,8 +40,8 @@ const Banner = () => {
                             <h1 className='text-4xl text-purple-900 text-start font-semibold'>Thousend of skills and degree we provide. also our have been a expert teacher</h1>
                             <p className='text-sm mt-2'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt impedit quidem eaque velit inventore nisi ea quibusdam, fugiat id distinctio. Voluptatem blanditiis cumque quasi eius dolor cum, libero impedit</p>
                             <div className='space-x-5 mt-4'>
-                                <button className='bg-purple-700 py-2 px-11 font-semibold text-lg text-white rounded-md'>Enroll today</button>
-                                <button className='bg-purple-700 py-2 px-11 font-semibold text-lg text-white rounded-md'>Join For free</button>
+                                <Link to='/courses' className='bg-purple-700 py-2 px-11 font-semibold text-lg text-white rounded-md'>Enroll today</Link>
+                                <Link className='bg-purple-700 py-2 px-11 font-semibold text-lg text-white rounded-md'>Join For free</Link>
                             </div>
                         </div>
                         <img   width={350} loading='lazy' src="https://i.ibb.co/ctw1cWj/portrait-happy-woman-with-digital-tablet-1-removebg-preview.png" alt="" />
@@ -53,8 +54,8 @@ const Banner = () => {
                             <h1 className='text-4xl text-purple-900 text-start font-semibold tracking-normal leading-normal'>why getting late! lets start your new journey and career</h1>
                             <p className='text-sm'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt impedit quidem eaque velit inventore nisi ea quibusdam, fugiat id distinctio. Voluptatem blanditiis cumque quasi eius dolor cum, libero impedit  </p>
                             <div className='space-x-5 mt-4'>
-                                <button className='bg-purple-700 py-2 px-11 font-semibold text-lg text-white rounded-md'>Enroll today</button>
-                                <button className='bg-purple-700 py-2 px-11 font-semibold text-lg text-white rounded-md'>Join For free</button>
+                                <Link to='/courses' className='bg-purple-700 py-2 px-11 font-semibold text-lg text-white rounded-md'>Enroll today</Link>
+                                <Link className='bg-purple-700 py-2 px-11 font-semibold text-lg text-white rounded-md'>Join For free</Link>
                             </div>
                         </div>
                         <img   width={460} loading='lazy' src="https://i.ibb.co/25TJLnd/handsome-businessman-suit-glasses-cross-arms-chest-look-removebg-preview-1.png" />

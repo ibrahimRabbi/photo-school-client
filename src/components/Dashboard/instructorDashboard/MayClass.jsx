@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 const MayClass = () => {
 
     const { datas, refetch } = useMyClass()
- 
+
 
     const deleteHandler = (id) => {
         Swal.fire({

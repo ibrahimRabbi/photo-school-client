@@ -14,9 +14,9 @@ const MyCourse = () => {
             .then(res => setData(res))
     }, [user])
 
-  
+
     return (
-        <section className='w-[90%] mx-auto mt-12'>
+        <section className='w-[90%] mx-auto my-12'>
             <TitleBar title='My classes' />
             <div className='grid grid-cols-3 gap-10 mt-10'>
                 {data.map(v => {

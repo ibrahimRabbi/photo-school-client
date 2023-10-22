@@ -25,7 +25,7 @@ const ManageClass = () => {
         })
             .then(res => res.json())
             .then(res => {
-                
+
                 if (res.modifiedCount > 0) {
                     refetch()
                     Swal.fire({
