@@ -24,7 +24,7 @@ const Card = ({ obj }) => {
                 
                 <div className="flex justify-between">
                     <StarRating rating={rating} />
-                    <Link to={`course/${_id}` } disabled={seats} className={`p-3 btn rounded-lg bg-purple-700 hover:bg-purple-800 text-white`}>Enroll Now</Link>
+                    <Link to={`/course/${_id}` } disabled={seats} className={`p-3 btn rounded-lg bg-purple-700 hover:bg-purple-800 text-white`}>Enroll Now</Link>
                 </div>
             </div>
         </div>

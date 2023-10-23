@@ -76,7 +76,7 @@ console.log(state.obj)
                 courseId: _id,
                 email: user?.email,
                 date: new Date(),
-                classImage, className, classPrice
+                classImage, className, classPrice : parseInt(classPrice)
             }
             fetch("http://localhost:5000/summery", {
                 method: "POST",

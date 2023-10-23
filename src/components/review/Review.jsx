@@ -6,13 +6,16 @@ import 'react-toastify/dist/ReactToastify.css';
 import StarRating from '../utility/Rating';
 import Swal from 'sweetalert2';
 import { Context } from '../Authentication/AuthProvider';
+import Loading from '../utility/Loading';
 
 const Review = () => {
     const data = useLoaderData()
     const { video, className, benefit, classPrice, classImage, rating, _id } = data
     const [save, setSave] = useState(false)
-    const { user } = useContext(Context)
+    const { user,loading } = useContext(Context)
     const navigate = useNavigate()
+const [datas,setData] = useState([])
+
 
     const saveHandler = () => {
         if (user) {
@@ -58,12 +61,20 @@ const Review = () => {
 
     }
 
-    useEffect(() => {
-        fetch(`http://localhost:5000/select/${_id}`)
-            .then(res => res.json())
-        .then(res=>setSave(res))
-    },[])
 
+    useEffect(() => {
+        fetch(`http://localhost:5000/select?email=${user?.email}`)
+            .then(res => res.json())
+            .then(res => {
+                setData(res)
+            })
+    }, [])
+  
+    const finding = datas.find(v => v.classId === _id)
+   
+    if (loading) {
+        return <Loading/>
+    }
     return (
         <section className='mt-11 w-[90%] mx-auto flex justify-start gap-16'>
             <iframe width="560" height="315" src={video}></iframe>
@@ -92,7 +103,7 @@ const Review = () => {
                 <div className='mt-16 w-[95%] flex justify-center gap-2 items-center'>
                     <Link to='/payment' state={{ obj: data }} className='bg-purple-700 text-white p-2 rounded-md text-center w-[60%]'>Check Out</Link>
                     <button onClick={saveHandler}>
-                        {save ? <BsBookmarkFill className='text-3xl text-purple-700' /> :
+                        {save || finding ? <BsBookmarkFill className='text-3xl text-purple-700' /> :
                             <BsBookmark className='text-3xl text-purple-800' />
                         }
 
